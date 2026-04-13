@@ -196,6 +196,27 @@
             margin: auto;
         }
 
+        /* Visit Time Section */
+        .visit-time {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .visit-time-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .visit-time-content p {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .visit-time-content strong {
+            color: var(--accent);
+        }
+
         /* Attraction Sections */
         .attraction {
             margin-bottom: 3rem;
@@ -249,6 +270,16 @@
             }
             .attraction-text h3 {
                 margin-bottom: 0.8rem;
+            }
+            .visit-time {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+            }
+            .visit-time-content h3 {
+                font-size: 1.3rem;
+            }
+            .visit-time-content p {
+                font-size: 0.9rem;
             }
         }
 
@@ -491,12 +522,21 @@
             <h2>Discover Shanghai</h2>
             <p>Shanghai, China's largest city and financial hub, offers a fascinating mix of historical landmarks and modern skyscrapers. From the colonial architecture of The Bund to the futuristic skyline of Pudong, Shanghai is a city that seamlessly blends the old and new.</p>
         </section>
+        
+        <!-- Suggested Visit Time -->
+        <section class="visit-time">
+            <div class="visit-time-content">
+                <h3>Suggested Visit Time</h3>
+                <p><strong>Recommended Duration:</strong> 5-8 days</p>
+                <p><strong>Best Time to Visit:</strong> March to May (spring) or September to November (autumn) when the weather is mild and comfortable.</p>
+            </div>
+        </section>
 
         <!-- The Bund -->
         <section class="attraction">
             <div class="attraction-content">
                 <div class="attraction-img">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=The%20Bund%20Shanghai%20colonial%20architecture%20skyline&image_size=landscape_16_9" alt="The Bund">
+                    <img src="images/waitan.jpeg" alt="The Bund">
                 </div>
                 <div class="attraction-text">
                     <h3>The Bund</h3>
@@ -510,7 +550,7 @@
         <section class="attraction">
             <div class="attraction-content">
                 <div class="attraction-img">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yu%20Garden%20Shanghai%20traditional%20Chinese%20garden&image_size=landscape_16_9" alt="Yu Garden">
+                    <img src="images/yuyuan.jpg" alt="Yu Garden">
                 </div>
                 <div class="attraction-text">
                     <h3>Yu Garden</h3>
@@ -530,6 +570,76 @@
                     <h3>Lujiazui</h3>
                     <p>Lujiazui is Shanghai's modern financial district located in Pudong, across the Huangpu River from The Bund. It's home to some of China's tallest and most iconic skyscrapers, including the Shanghai Tower (632 meters), the Oriental Pearl Tower, and the Shanghai World Financial Center.</p>
                     <p>This bustling business district is a symbol of Shanghai's rapid modernization and economic growth. Visitors can enjoy panoramic views of the city from the observation decks of these skyscrapers or relax in the nearby Century Park.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zhujiajiao Watertown -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zhujiajiao%20Watertown%20Shanghai%20ancient%20canal%20town&image_size=landscape_16_9" alt="Zhujiajiao Watertown">
+                </div>
+                <div class="attraction-text">
+                    <h3>Zhujiajiao Watertown</h3>
+                    <p>Zhujiajiao is a well-preserved ancient water town located about 40 kilometers from central Shanghai. With a history dating back over 1,700 years, it's often referred to as the "Venice of Shanghai" due to its network of canals, stone bridges, and traditional architecture.</p>
+                    <p>Visitors can explore the town's narrow alleyways, visit historic temples, and take boat rides along the canals. The town is also known for its local snacks and handicrafts, making it a popular day trip from Shanghai.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tianzifang -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Tianzifang%20Shanghai%20artistic%20alleyways%20shops&image_size=landscape_16_9" alt="Tianzifang">
+                </div>
+                <div class="attraction-text">
+                    <h3>Tianzifang</h3>
+                    <p>Tianzifang is a trendy arts and crafts enclave located in the former French Concession area of Shanghai. It's a maze of narrow alleyways lined with boutique shops, art galleries, cafes, and restaurants, all housed in traditional shikumen (stone-gate) houses.</p>
+                    <p>This bohemian neighborhood is popular with both locals and tourists for its unique atmosphere, where traditional Shanghai architecture meets contemporary art and design. It's a great place to shop for unique souvenirs, enjoy a coffee, or simply wander through the charming lanes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panlongtiandi Watertown -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Panlongtiandi%20Watertown%20Shanghai%20traditional%20water%20town&image_size=landscape_16_9" alt="Panlongtiandi Watertown">
+                </div>
+                <div class="attraction-text">
+                    <h3>Panlongtiandi Watertown</h3>
+                    <p>Panlongtiandi is a traditional water town located in the Qingpu District of Shanghai. It features classic江南 (Jiangnan) style architecture with canals, stone bridges, and well-preserved ancient buildings.</p>
+                    <p>The town offers a peaceful escape from the bustling city, with opportunities to take boat rides, explore historic sites, and sample local cuisine. It's a great destination for those looking to experience traditional Chinese water town culture.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wukang Building -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="images/wukang.jpg" alt="Wukang Building">
+                </div>
+                <div class="attraction-text">
+                    <h3>Wukang Building</h3>
+                    <p>Wukang Building (formerly Normandie Apartments) is an iconic Art Deco building located on Wukang Road in Shanghai's former French Concession. Designed by Hungarian architect Laszlo Hudec in 1924, this curved eight-story building is considered one of the most significant examples of Art Deco architecture in Shanghai.</p>
+                    <p>The building's unique curved facade and elegant design have made it a beloved landmark and a popular spot for photography. It's often compared to similar buildings in Paris and is sometimes called the "Flatiron Building of Shanghai" due to its distinctive shape.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anfu Road -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="images/anfu.jpg" alt="Anfu Road">
+                </div>
+                <div class="attraction-text">
+                    <h3>Anfu Road</h3>
+                    <p>Anfu Road is a trendy street in the former French Concession area of Shanghai, known for its boutique shops, stylish cafes, and art galleries. It's a popular spot for young locals and expats, offering a mix of designer stores, vintage shops, and cozy eateries.</p>
+                    <p>The street has a relaxed, bohemian atmosphere, with tree-lined sidewalks and a variety of unique establishments. It's a great place to explore for shopping, dining, or simply enjoying the vibrant street scene of modern Shanghai.</p>
                 </div>
             </div>
         </section>

@@ -196,6 +196,27 @@
             margin: auto;
         }
 
+        /* Visit Time Section */
+        .visit-time {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .visit-time-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .visit-time-content p {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .visit-time-content strong {
+            color: var(--accent);
+        }
+
         /* Attraction Sections */
         .attraction {
             margin-bottom: 3rem;
@@ -249,6 +270,16 @@
             }
             .attraction-text h3 {
                 margin-bottom: 0.8rem;
+            }
+            .visit-time {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+            }
+            .visit-time-content h3 {
+                font-size: 1.3rem;
+            }
+            .visit-time-content p {
+                font-size: 0.9rem;
             }
         }
 
@@ -491,6 +522,15 @@
             <h2>Discover Suzhou</h2>
             <p>Suzhou, located in Jiangsu Province, is known as the "Venice of the East" for its extensive canal system and classical gardens. With a history dating back over 2,500 years, it's a city that preserves traditional Chinese architecture and culture while embracing modern development.</p>
         </section>
+        
+        <!-- Suggested Visit Time -->
+        <section class="visit-time">
+            <div class="visit-time-content">
+                <h3>Suggested Visit Time</h3>
+                <p><strong>Recommended Duration:</strong> 2-3 days</p>
+                <p><strong>Best Time to Visit:</strong> March to May (spring) when the gardens are in bloom, or September to November (autumn) when the weather is mild and comfortable.</p>
+            </div>
+        </section>
 
         <!-- Humble Administrator's Garden -->
         <section class="attraction">
@@ -520,16 +560,44 @@
             </div>
         </section>
 
-        <!-- Zhouzhuang Water Town -->
+        <!-- Panmen Scenic Area -->
         <section class="attraction">
             <div class="attraction-content">
                 <div class="attraction-img">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zhouzhuang%20water%20town%20Suzhou%20canals&image_size=landscape_16_9" alt="Zhouzhuang Water Town">
+                    <img src="images/panmen.jpg" alt="Panmen Scenic Area">
                 </div>
                 <div class="attraction-text">
-                    <h3>Zhouzhuang Water Town</h3>
-                    <p>Zhouzhuang is one of the most famous water towns in China, located about an hour's drive from Suzhou. It's known for its well-preserved traditional architecture, canals, and stone bridges.</p>
-                    <p>Often called the "No. 1 Water Town in China," Zhouzhuang has a history dating back over 900 years. Visitors can take boat rides along the canals, explore ancient residences, and experience traditional Chinese water town culture. It's a popular day trip from Suzhou.</p>
+                    <h3>Panmen Scenic Area</h3>
+                    <p>Panmen Scenic Area is one of the most important historical sites in Suzhou, featuring the ancient Panmen Gate, one of the few remaining city gates from the Spring and Autumn Period (770-476 BC). The area also includes the Ruiguang Pagoda, one of Suzhou's oldest pagodas.</p>
+                    <p>Visitors can explore the ancient city walls, enjoy the beautiful gardens, and take boat rides along the moat. The scenic area offers a unique combination of historical relics and natural beauty, making it a must-visit attraction in Suzhou.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jinji Lake -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Jinji%20Lake%20Suzhou%20modern%20skyline&image_size=landscape_16_9" alt="Jinji Lake">
+                </div>
+                <div class="attraction-text">
+                    <h3>Jinji Lake</h3>
+                    <p>Jinji Lake is a large artificial lake located in Suzhou Industrial Park, showcasing the modern side of the city. Surrounded by skyscrapers, shopping malls, and entertainment venues, it's a popular destination for both locals and tourists.</p>
+                    <p>Visitors can enjoy boat rides on the lake, stroll along the scenic waterfront, or visit attractions like the Ferris wheel and the Suzhou Culture and Arts Center. The lake is especially beautiful at night when the surrounding buildings are lit up.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Qilishantang (七里山塘) -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="images/qilishitang.jpg" alt="Qilishantang">
+                </div>
+                <div class="attraction-text">
+                    <h3>Qilishantang (七里山塘)</h3>
+                    <p>Qilishantang, also known as Shantang Street, is a historic water street located in the old town of Suzhou. Stretching for about 3.5 kilometers (hence the name "Qilishan" which means "seven li"), it's one of the oldest and most well-preserved streets in the city.</p>
+                    <p>Originally built in the Tang Dynasty (618-907 AD) by the famous poet Bai Juyi, Qilishantang features traditional architecture, canals, and stone bridges. Today, it's a popular pedestrian street lined with shops, restaurants, and historical sites, offering a glimpse into Suzhou's traditional way of life.</p>
                 </div>
             </div>
         </section>
