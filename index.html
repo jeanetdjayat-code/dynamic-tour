@@ -175,6 +175,61 @@
             max-width: 90%; /* Fit on mobile screens */
             opacity: 0.95;
             line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        
+        .banner-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+        }
+        
+        .btn-primary:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .banner-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+                text-align: center;
+            }
         }
 
         /* ----------------- HEADER (Mobile Optimized + Visual Polish) ----------------- */
@@ -533,13 +588,17 @@
     <!-- Banner -->
     <section class="banner" id="home">
         <h1>Discover China's Beauty</h1>
-        <p>Experience the rich culture, stunning landscapes, and vibrant history of China with our expert-guided tours.</p>
+        <p>Our high experienced tourguide will guide you through your trip! We also provide transportation in all sizes, from small cars to big buses!</p>
+        <div class="banner-buttons">
+            <a href="https://wa.me/6281318838877?text=Hello%20I%20am%20interested%20in%20your%20Private%20Tour%20service" class="btn btn-primary">Private Tour</a>
+            <a href="https://wa.me/6281318838877?text=Hello%20I%20am%20interested%20in%20your%20Car%20Rental%20service" class="btn btn-secondary">Car Rental</a>
+        </div>
     </section>
 
     <!-- Header -->
     <header>
-        <h1>China Travel Guide</h1>
-        <p>Your comprehensive guide to exploring the wonders of China, from ancient landmarks to modern metropolises.</p>
+        <h1>Experience our modern <span style="color: var(--accent); font-weight: 700;">Private Tour</span>!</h1>
+        <p>Discover the perfect blend of tradition and modernity with our personalized travel experiences.</p>
     </header>
 
     <!-- Main Content -->
