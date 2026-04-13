@@ -198,7 +198,7 @@
 
         /* Attraction Sections */
         .attraction {
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         .attraction-content {
             display: flex;
@@ -225,6 +225,31 @@
         .attraction-text p {
             margin-bottom: 1rem;
             line-height: 1.6;
+        }
+        
+        /* Mobile optimization for attractions */
+        @media (max-width: 768px) {
+            .attraction-content {
+                flex-direction: column;
+            }
+            .attraction-img {
+                order: 1;
+                width: 100%;
+            }
+            .attraction-text {
+                order: 2;
+                width: 100%;
+            }
+            .attraction {
+                margin-bottom: 2rem;
+            }
+            .attraction-text p {
+                margin-bottom: 0.6rem;
+                line-height: 1.5;
+            }
+            .attraction-text h3 {
+                margin-bottom: 0.8rem;
+            }
         }
 
         /* Food Section */
@@ -310,13 +335,17 @@
             color: var(--accent);
             margin-top: 0.5rem;
         }
-        .footer-bottom-sections {
+        .footer-middle-section {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            max-width: 600px;
             margin: 0 auto;
+            max-width: 600px;
+        }
+        .footer-bottom-section {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 600px;
         }
         .footer-section {
             min-width: 250px;
@@ -366,7 +395,8 @@
 
         /* Mobile optimization for footer */
         @media (max-width: 768px) {
-            .footer-bottom-sections {
+            .footer-middle-section,
+            .footer-bottom-section {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
@@ -412,6 +442,8 @@
                 right: 1.5rem;
             }
         }
+
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -477,13 +509,13 @@
         <!-- Yuelu Mountain -->
         <section class="attraction">
             <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yuelu%20Mountain%20Changsha%20scenic%20view&image_size=landscape_16_9" alt="Yuelu Mountain">
+                </div>
                 <div class="attraction-text">
                     <h3>Yuelu Mountain</h3>
                     <p>Yuelu Mountain is located on the west bank of the Xiang River. It's known for its beautiful natural scenery and historical sites, including the Yuelu Academy, one of the four great academies of ancient China.</p>
                     <p>The mountain offers hiking trails that lead to various temples, pavilions, and scenic viewpoints. At the top, visitors can enjoy panoramic views of Changsha city. It's a great place to escape the hustle and bustle of the city and connect with nature.</p>
-                </div>
-                <div class="attraction-img">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yuelu%20Mountain%20Changsha%20scenic%20view&image_size=landscape_16_9" alt="Yuelu Mountain">
                 </div>
             </div>
         </section>
@@ -505,13 +537,13 @@
         <!-- Hunan Provincial Museum -->
         <section class="attraction">
             <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Hunan%20Provincial%20Museum%20Changsha%20modern%20architecture&image_size=landscape_16_9" alt="Hunan Provincial Museum">
+                </div>
                 <div class="attraction-text">
                     <h3>Hunan Provincial Museum</h3>
                     <p>The Hunan Provincial Museum is one of the most important museums in China. It houses a vast collection of artifacts from Hunan's history, including the famous Mawangdui Han Dynasty tombs artifacts.</p>
                     <p>The museum's exhibits showcase the rich cultural heritage of Hunan Province, from ancient times to the present. It's a must-visit for anyone interested in Chinese history and culture, offering a deep insight into the region's past.</p>
-                </div>
-                <div class="attraction-img">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Hunan%20Provincial%20Museum%20Changsha%20modern%20architecture&image_size=landscape_16_9" alt="Hunan Provincial Museum">
                 </div>
             </div>
         </section>
@@ -571,21 +603,23 @@
                 <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
                 <p class="hassle-text">Hassle no more!</p>
             </div>
-            <div class="footer-bottom-sections">
+            <div class="footer-middle-section">
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <p>Email: dynamicteams1122@gmail.com</p>
                     <p>Whatsapp: +62 81318838877</p>
                     <p>Wechat: Zhou_1177</p>
                 </div>
+            </div>
+            <div class="footer-bottom-section">
                 <div class="footer-section">
                     <h3>Follow Us</h3>
                     <div class="social-links">
-                        <a href="#" class="social-link" title="WeChat">
+                        <a href="images/wechatbarcode.jpeg" class="social-link" title="WeChat QR Code" target="_blank">
                             <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
                         </a>
-                        <a href="#" class="social-link" title="Instagram">
-                            <img src="images/instagram.jpeg.png" alt="Instagram" width="20" height="20">
+                        <a href="https://instagram.com/jeanet.eunice" class="social-link" title="Instagram" target="_blank">
+                            <img src="images/instagram.png" alt="Instagram" width="20" height="20">
                         </a>
                     </div>
                 </div>
@@ -600,6 +634,8 @@
     <a href="https://wa.me/6281318838877" class="whatsapp-btn" target="_blank">
         <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
     </a>
+
+
 
     <script>
         // Mobile menu toggle
@@ -617,6 +653,8 @@
                 });
             });
         });
+
+
     </script>
 </body>
 </html>

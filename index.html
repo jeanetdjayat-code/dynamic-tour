@@ -373,13 +373,17 @@
             margin-top: 0.5rem;
         }
 
-        .footer-bottom-sections {
+        .footer-middle-section {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            max-width: 600px;
             margin: 0 auto;
+            max-width: 600px;
+        }
+        .footer-bottom-section {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 600px;
         }
         .footer-section {
             min-width: 250px;
@@ -422,7 +426,8 @@
         
         /* Mobile optimization for footer */
         @media (max-width: 768px) {
-            .footer-bottom-sections {
+            .footer-middle-section,
+            .footer-bottom-section {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
@@ -476,6 +481,8 @@
                 right: 1.5rem;
             }
         }
+
+
 
         /* ----------------- RESPONSIVE ADJUSTMENTS ----------------- */
         @media (max-width: 768px) {
@@ -642,21 +649,23 @@
                 <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
                 <p class="hassle-text">Hassle no more!</p>
             </div>
-            <div class="footer-bottom-sections">
+            <div class="footer-middle-section">
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <p>Email: dynamicteams1122@gmail.com</p>
                     <p>Whatsapp: +62 81318838877</p>
                     <p>Wechat: Zhou_1177</p>
                 </div>
+            </div>
+            <div class="footer-bottom-section">
                 <div class="footer-section">
                     <h3>Follow Us</h3>
                     <div class="social-links">
-                        <a href="#" class="social-link" title="WeChat">
+                        <a href="images/wechatbarcode.jpeg" class="social-link" title="WeChat QR Code" target="_blank">
                             <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
                         </a>
-                        <a href="#" class="social-link" title="Instagram">
-                            <img src="images/instagram.jpeg.png" alt="Instagram" width="20" height="20">
+                        <a href="https://instagram.com/jeanet.eunice" class="social-link" title="Instagram" target="_blank">
+                            <img src="images/instagram.png" alt="Instagram" width="20" height="20">
                         </a>
                     </div>
                 </div>
@@ -672,6 +681,8 @@
         <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
     </a>
 
+
+
     <script>
         // Mobile menu toggle
         function toggleMenu() {
@@ -680,7 +691,7 @@
         }
 
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -707,6 +718,8 @@
                 navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
             }
         });
+
+
     </script>
 </body>
 </html>
