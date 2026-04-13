@@ -151,7 +151,7 @@
 
         /* ----------------- BANNER (Mobile Optimized + Performance) ----------------- */
         .banner {
-            height: clamp(250px, 50vw, 500px); /* Better mobile height ratio */
+            height: clamp(280px, 60vw, 500px); /* Better mobile height ratio */
             background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
                         url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20landscape%20panoramic%20view%20mountains%20and%20rivers&image_size=landscape_16_9') center/cover no-repeat; /* Added no-repeat */
             display: flex;
@@ -160,39 +160,39 @@
             justify-content: center;
             color: white;
             text-align: center;
-            padding: 1rem; /* Reduced padding for mobile */
+            padding: 1rem;
             /* Add loading fallback */
             background-color: var(--primary);
         }
         .banner h1 {
-            font-size: clamp(1.8rem, 6vw, 3.4rem); /* Better mobile scaling */
-            margin-bottom: 0.8rem;
+            font-size: clamp(1.6rem, 5vw, 3rem); /* Better mobile scaling */
+            margin-bottom: 0.6rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             line-height: 1.2; /* Prevent text overlap on mobile */
         }
         .banner p {
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            max-width: 90%; /* Fit on mobile screens */
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            max-width: 95%; /* Fit on mobile screens */
             opacity: 0.95;
-            line-height: 1.5;
-            margin-bottom: 2rem;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
         }
         
         .banner-buttons {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             flex-wrap: wrap;
             justify-content: center;
         }
         
         .btn {
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
         
         .btn-primary {
@@ -221,14 +221,34 @@
         }
         
         @media (max-width: 768px) {
+            .banner {
+                height: clamp(300px, 70vw, 500px);
+                padding: 1.5rem 1rem;
+            }
             .banner-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.8rem;
             }
             
             .btn {
                 width: 200px;
                 text-align: center;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: clamp(1.4rem, 6vw, 2rem);
+            }
+            .banner p {
+                font-size: clamp(0.75rem, 3vw, 0.9rem);
+                line-height: 1.3;
+            }
+            .btn {
+                width: 180px;
+                padding: 0.7rem 1.2rem;
             }
         }
 
@@ -236,19 +256,33 @@
         header {
             background: white;
             border-bottom: 3px solid var(--primary);
-            padding: 1.5rem 1rem; /* Reduced padding for mobile */
+            padding: 1.2rem 1rem;
             text-align: center;
         }
         header h1 {
             color: var(--primary);
-            font-size: clamp(1.6rem, 5vw, 2.5rem);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
         }
         header p {
             color: var(--dark);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.8rem, 2vw, 1rem);
             max-width: 900px;
             margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 0.8rem;
+            }
+            header h1 {
+                font-size: clamp(1.2rem, 5vw, 1.8rem);
+            }
+            header p {
+                font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+            }
         }
 
         /* ----------------- MAIN CONTENT (Enhanced + Performance) ----------------- */
@@ -260,16 +294,16 @@
 
         /* ----------------- DESTINATIONS SECTION (Polished + Mobile Responsive) ----------------- */
         .destinations {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
         }
         .section-title h2 {
             color: var(--primary);
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-size: clamp(1.4rem, 4vw, 2rem);
             display: inline-block;
             padding: 0 1rem;
             background: var(--light);
@@ -289,9 +323,9 @@
 
         .destination-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .destination-card {
@@ -307,7 +341,7 @@
         }
 
         .card-img {
-            height: 200px;
+            height: 180px;
             overflow: hidden;
         }
         .card-img img {
@@ -321,17 +355,18 @@
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
         .card-content h3 {
             color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
         }
         .card-content p {
             color: var(--dark);
-            margin-bottom: 1rem;
-            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
         .card-btn {
             display: inline-block;
@@ -342,10 +377,50 @@
             text-decoration: none;
             font-weight: 500;
             transition: background 0.3s, transform 0.2s;
+            font-size: 0.85rem;
         }
         .card-btn:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .destinations {
+                margin-bottom: 2rem;
+            }
+            .section-title {
+                margin-bottom: 1.2rem;
+            }
+            .destination-grid {
+                gap: 1.2rem;
+                margin-top: 1.2rem;
+            }
+            .card-content {
+                padding: 1rem;
+            }
+            .card-content h3 {
+                font-size: 1.1rem;
+            }
+            .card-content p {
+                font-size: 0.85rem;
+            }
+            .card-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .destination-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .card-img {
+                height: 160px;
+            }
+            .card-content {
+                padding: 0.9rem;
+            }
         }
 
         /* ----------------- CULTURE SECTION (Enhanced + Mobile Optimized) ----------------- */
