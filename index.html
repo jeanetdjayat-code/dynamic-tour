@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tour - China Travel Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #0F3057;
+            --primary-light: #1a4a7a;
+            --accent: #ff7d00;
+            --light: #f8f9fa;
+            --gray: #eee;
+            --dark: #333;
+            --wechat-green: #07C160; /* Official WeChat green color */
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ----------------- TOP NAVBAR (EXTRA LARGE LOGO + PERFORMANCE FIX) ----------------- */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 100px;
+            width: auto;
+            /* Add fallback for logo image */
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s; /* Added transform for hover */
+            padding: 0.2rem 0;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-1px); /* Subtle hover effect */
+        }
+        .menu-btn {
+            display: none;
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem; /* Better touch target for mobile */
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .menu-btn:hover {
+            background-color: var(--gray);
+        }
+
+        /* Mobile Responsive Navbar (Enhanced + Bug Fixes) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                gap: 1rem;
+                z-index: 999;
+                border-top: 2px solid var(--primary-light); /* Visual separation */
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .logo-img {
+                 height: 80px;
+             }
+             .logo-text {
+                 font-size: 1.4rem;
+             }
+            /* Fix small screen logo text wrap */
+            .logo-container {
+                gap: 0.5rem;
+            }
+        }
+
+        /* Mobile optimization for small screens (320px-480px) */
+        @media (max-width: 480px) {
+            .logo-text {
+                 font-size: 1.2rem;
+             }
+             .logo-img {
+                 height: 65px;
+             }
+            .nav-container {
+                padding: 0.6rem 0.8rem;
+            }
+            .nav-links {
+                padding: 1rem 1.5rem; /* Tighter padding for small screens */
+            }
+        }
+
+        /* ----------------- BANNER (Mobile Optimized + Performance) ----------------- */
+        .banner {
+            height: clamp(250px, 50vw, 500px); /* Better mobile height ratio */
+            background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
+                        url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20landscape%20panoramic%20view%20mountains%20and%20rivers&image_size=landscape_16_9') center/cover no-repeat; /* Added no-repeat */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 1rem; /* Reduced padding for mobile */
+            /* Add loading fallback */
+            background-color: var(--primary);
+        }
+        .banner h1 {
+            font-size: clamp(1.8rem, 6vw, 3.4rem); /* Better mobile scaling */
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2; /* Prevent text overlap on mobile */
+        }
+        .banner p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            max-width: 90%; /* Fit on mobile screens */
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        /* ----------------- HEADER (Mobile Optimized + Visual Polish) ----------------- */
+        header {
+            background: white;
+            border-bottom: 3px solid var(--primary);
+            padding: 1.5rem 1rem; /* Reduced padding for mobile */
+            text-align: center;
+        }
+        header h1 {
+            color: var(--primary);
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            color: var(--dark);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ----------------- MAIN CONTENT (Enhanced + Performance) ----------------- */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* ----------------- DESTINATIONS SECTION (Polished + Mobile Responsive) ----------------- */
+        .destinations {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .section-title h2 {
+            color: var(--primary);
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            display: inline-block;
+            padding: 0 1rem;
+            background: var(--light);
+            position: relative;
+            z-index: 1;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray);
+            z-index: 0;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .destination-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card-content h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        .card-content p {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .card-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .card-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* ----------------- CULTURE SECTION (Enhanced + Mobile Optimized) ----------------- */
+        .culture-section {
+            background: white;
+            padding: 3rem 1rem;
+            margin: 3rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .culture-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .culture-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .culture-text h3 {
+            color: var(--primary);
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            margin-bottom: 1rem;
+        }
+        .culture-text p {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .culture-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* ----------------- FOOTER (Enhanced + Mobile Responsive) ----------------- */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 1rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-top-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-top-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .footer-top-section p {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .hassle-text {
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+
+        .footer-bottom-sections {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            min-width: 250px;
+            text-align: center;
+        }
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .footer-section a:hover {
+            color: white;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--accent);
+        }
+        
+        /* Mobile optimization for footer */
+        @media (max-width: 768px) {
+            .footer-bottom-sections {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-section {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ----------------- WHATSAPP BUTTON (Fixed + Mobile Optimized) ----------------- */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366; /* WhatsApp green */
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 998;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Mobile optimization for WhatsApp button */
+        @media (max-width: 480px) {
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        /* ----------------- RESPONSIVE ADJUSTMENTS ----------------- */
+        @media (max-width: 768px) {
+            .main-content {
+                margin: 1.5rem auto;
+            }
+            .destinations {
+                margin-bottom: 2rem;
+            }
+            .culture-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+            footer {
+                padding: 2rem 1rem 1rem;
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .destination-grid {
+                gap: 1.5rem;
+            }
+            .card-content {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <img src="images/logo.jpeg" alt="Dynamic Tour Logo" class="logo-img">
+                <span class="logo-text">Dynamic Tour</span>
+            </a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#culture">Culture</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner" id="home">
+        <h1>Discover China's Beauty</h1>
+        <p>Experience the rich culture, stunning landscapes, and vibrant history of China with our expert-guided tours.</p>
+    </section>
+
+    <!-- Header -->
+    <header>
+        <h1>China Travel Guide</h1>
+        <p>Your comprehensive guide to exploring the wonders of China, from ancient landmarks to modern metropolises.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Destinations Section -->
+        <section class="destinations" id="destinations">
+            <div class="section-title">
+                <h2>Top Destinations</h2>
+            </div>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20modern%20city&image_size=landscape_16_9" alt="Shanghai">
+                    </div>
+                    <div class="card-content">
+                        <h3>Shanghai</h3>
+                        <p>China's largest city and financial hub, Shanghai blends modern skyscrapers with historical neighborhoods like the Bund and French Concession.</p>
+                        <a href="shanghai.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Beijing%20Forbidden%20City%20imperial%20palace&image_size=landscape_16_9" alt="Beijing">
+                    </div>
+                    <div class="card-content">
+                        <h3>Beijing</h3>
+                        <p>China's capital, home to iconic landmarks like the Forbidden City, Great Wall, and Temple of Heaven, steeped in thousands of years of history.</p>
+                        <a href="beijing.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Hangzhou%20West%20Lake%20scenic%20view&image_size=landscape_16_9" alt="Hangzhou">
+                    </div>
+                    <div class="card-content">
+                        <h3>Hangzhou</h3>
+                        <p>Famous for the scenic West Lake, Hangzhou is known as the "Paradise on Earth" with its beautiful gardens, temples, and tea plantations.</p>
+                        <a href="hangzhou.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Suzhou%20classical%20gardens%20traditional%20architecture&image_size=landscape_16_9" alt="Suzhou">
+                    </div>
+                    <div class="card-content">
+                        <h3>Suzhou</h3>
+                        <p>Known as the "Venice of the East," Suzhou is famous for its classical gardens, canals, and traditional silk production.</p>
+                        <a href="suzhou.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Wuhan%20Yellow%20Crane%20Tower%20cherry%20blossoms&image_size=landscape_16_9" alt="Wuhan">
+                    </div>
+                    <div class="card-content">
+                        <h3>Wuhan</h3>
+                        <p>Known as the "City of Sakura" for its stunning cherry blossoms in spring, Wuhan is located at the confluence of the Yangtze and Han Rivers, and is a major cultural and economic center with a rich history.</p>
+                        <a href="wuhan.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Changsha%20Orange%20Isle%20scenic%20view&image_size=landscape_16_9" alt="Changsha">
+                    </div>
+                    <div class="card-content">
+                        <h3>Changsha</h3>
+                        <p>Capital of Hunan Province, Changsha is known for its spicy cuisine, historical sites, and vibrant cultural scene.</p>
+                        <a href="changsha.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20ancient%20capital%20historical%20city&image_size=landscape_16_9" alt="Nanjing">
+                    </div>
+                    <div class="card-content">
+                        <h3>Nanjing</h3>
+                        <p>Former capital of China, Nanjing boasts historical landmarks like the Ming Xiaoling Mausoleum and the Nanjing City Wall.</p>
+                        <a href="nanjing.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culture Section -->
+        <section class="culture-section" id="culture">
+            <div class="section-title">
+                <h2>Chinese Culture</h2>
+            </div>
+            <div class="culture-content">
+                <div class="culture-text">
+                    <h3>Rich Cultural Heritage</h3>
+                    <p>China boasts a history spanning over 5,000 years, with a rich tapestry of traditions, art, and philosophy. From the ancient teachings of Confucius to the vibrant festivals that celebrate the lunar calendar, Chinese culture is both deep and diverse.</p>
+                    <p>Experience traditional Chinese cuisine, witness breathtaking performances of Peking Opera, and explore the intricate art of Chinese calligraphy and painting.</p>
+                </div>
+                <div class="culture-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20cultural%20performance&image_size=landscape_16_9" alt="Chinese Culture">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-top-section">
+                <h3>About Us</h3>
+                <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
+                <p class="hassle-text">Hassle no more!</p>
+            </div>
+            <div class="footer-bottom-sections">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: dynamicteams1122@gmail.com</p>
+                    <p>Whatsapp: +62 81318838877</p>
+                    <p>Wechat: Zhou_1177</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="WeChat">
+                            <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
+                        </a>
+                        <a href="#" class="social-link" title="Instagram">
+                            <img src="images/instagram.jpeg.png" alt="Instagram" width="20" height="20">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6281318838877" class="whatsapp-btn" target="_blank">
+        <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

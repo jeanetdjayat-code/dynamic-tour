@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanjing - Dynamic Tour</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #0F3057;
+            --primary-light: #1a4a7a;
+            --accent: #ff7d00;
+            --light: #f8f9fa;
+            --gray: #eee;
+            --dark: #333;
+            --wechat-green: #07C160;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 100px;
+            width: auto;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s;
+            padding: 0.2rem 0;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .menu-btn {
+            display: none;
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .menu-btn:hover {
+            background-color: var(--gray);
+        }
+
+        /* Mobile Responsive Navbar */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                gap: 1rem;
+                z-index: 999;
+                border-top: 2px solid var(--primary-light);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .logo-img {
+                height: 80px;
+            }
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            .logo-container {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            .logo-img {
+                height: 65px;
+            }
+            .nav-container {
+                padding: 0.6rem 0.8rem;
+            }
+            .nav-links {
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* Banner */
+        .banner {
+            height: clamp(250px, 50vw, 500px);
+            background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
+                        url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20ancient%20city%20wall%20historical%20landmark&image_size=landscape_16_9') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--primary);
+        }
+        .banner h1 {
+            font-size: clamp(1.8rem, 6vw, 3.4rem);
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        .banner p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            max-width: 90%;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-title p {
+            color: var(--dark);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Attraction Sections */
+        .attraction {
+            margin-bottom: 4rem;
+        }
+        .attraction-content {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .attraction-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .attraction-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .attraction-text h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .attraction-text p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Food Section */
+        .food-section {
+            margin-top: 4rem;
+        }
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .food-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .food-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .food-card:hover .food-img img {
+            transform: scale(1.05);
+        }
+        .food-content {
+            padding: 1.5rem;
+        }
+        .food-content h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .food-content p {
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 1rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-top-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-top-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .footer-top-section p {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .hassle-text {
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+        .footer-bottom-sections {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            min-width: 250px;
+            text-align: center;
+        }
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .footer-section a:hover {
+            color: white;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Mobile optimization for footer */
+        @media (max-width: 768px) {
+            .footer-bottom-sections {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-section {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 998;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Mobile optimization for WhatsApp button */
+        @media (max-width: 480px) {
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+            .attraction-content {
+                flex-direction: column;
+            }
+            .attraction-img,
+            .attraction-text {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.jpeg" alt="Dynamic Tour Logo" class="logo-img">
+                <span class="logo-text">Dynamic Tour</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#culture">Culture</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner" id="home">
+        <h1>Nanjing</h1>
+        <p>Explore the ancient capital with its rich history and cultural heritage</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Introduction -->
+        <section class="section-title">
+            <h2>Discover Nanjing</h2>
+            <p>Nanjing, the former capital of China, is a city with a rich history spanning over 2,500 years. It served as the capital for several dynasties and is home to numerous historical landmarks, including the Ming Xiaoling Mausoleum, Nanjing City Wall, and the Sun Yat-sen Mausoleum.</p>
+        </section>
+
+        <!-- Ming Xiaoling Mausoleum -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Ming%20Xiaoling%20Mausoleum%20Nanjing%20historical%20tomb&image_size=landscape_16_9" alt="Ming Xiaoling Mausoleum">
+                </div>
+                <div class="attraction-text">
+                    <h3>Ming Xiaoling Mausoleum</h3>
+                    <p>The Ming Xiaoling Mausoleum is the tomb of the first emperor of the Ming Dynasty, Zhu Yuanzhang, and his empress. Built between 1381 and 1431, it's a UNESCO World Heritage site known for its grand architecture and beautiful natural surroundings.</p>
+                    <p>The mausoleum complex includes a long spirit way lined with stone statues of animals and officials, leading to the tomb itself. It's set in a scenic area with pine trees and lakes, making it a popular place for both history buffs and nature lovers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nanjing City Wall -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-text">
+                    <h3>Nanjing City Wall</h3>
+                    <p>The Nanjing City Wall is one of the best-preserved ancient city walls in China. Built during the Ming Dynasty, it stretches for over 35 kilometers and is known for its massive size and impressive construction.</p>
+                    <p>Visitors can walk along sections of the wall, enjoying panoramic views of the city and the surrounding landscape. The wall features numerous gates, watchtowers, and fortifications, providing a glimpse into ancient Chinese military architecture.</p>
+                </div>
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20City%20Wall%20ancient%20fortification&image_size=landscape_16_9" alt="Nanjing City Wall">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sun Yat-sen Mausoleum -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Sun%20Yat-sen%20Mausoleum%20Nanjing%20memorial&image_size=landscape_16_9" alt="Sun Yat-sen Mausoleum">
+                </div>
+                <div class="attraction-text">
+                    <h3>Sun Yat-sen Mausoleum</h3>
+                    <p>The Sun Yat-sen Mausoleum is the final resting place of Sun Yat-sen, the founding father of the Republic of China. Built between 1926 and 1929, it's located on the southern slope of Purple Mountain and is known for its grand architecture and beautiful surroundings.</p>
+                    <p>The mausoleum complex includes a series of steps leading up to the main hall, where Sun Yat-sen's sarcophagus is located. The area is surrounded by pine trees and offers panoramic views of Nanjing city.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confucius Temple -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-text">
+                    <h3>Confucius Temple</h3>
+                    <p>The Confucius Temple, also known as the Fuzimiao, is a complex of traditional buildings dedicated to Confucius. It's located in the Qinhuai District, along the banks of the Qinhuai River, and is known for its traditional architecture and vibrant night scenes.</p>
+                    <p>The temple complex includes a series of halls, pavilions, and gardens, as well as a bustling shopping area with traditional shops and restaurants. At night, the area is illuminated with red lanterns, creating a magical atmosphere.</p>
+                </div>
+                <div class="attraction-img">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Confucius%20Temple%20Nanjing%20traditional%20architecture&image_size=landscape_16_9" alt="Confucius Temple">
+                </div>
+            </div>
+        </section>
+
+        <!-- Local Food -->
+        <section class="food-section">
+            <div class="section-title">
+                <h2>Local Food</h2>
+                <p>Nanjing cuisine is known for its bold flavors and unique dishes, influenced by its history as a former capital. It features a variety of snacks and dishes that reflect the city's rich culinary heritage.</p>
+            </div>
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20salted%20duck%20local%20specialty&image_size=landscape_16_9" alt="Salted Duck">
+                    </div>
+                    <div class="food-content">
+                        <h4>Salted Duck</h4>
+                        <p>Nanjing salted duck is a famous local specialty. It's made by salting and brining duck, then boiling it until tender. The result is a flavorful, tender duck with a crispy skin.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20small%20steamed%20buns%20xiaolongbao&image_size=landscape_16_9" alt="Xiaolongbao">
+                    </div>
+                    <div class="food-content">
+                        <h4>Xiaolongbao</h4>
+                        <p>These steamed dumplings are filled with juicy meat and broth. Nanjing's version of xiaolongbao has its own unique flavor, often with a slightly sweet taste.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20sesame%20cake%20local%20snack&image_size=landscape_16_9" alt="Sesame Cake">
+                    </div>
+                    <div class="food-content">
+                        <h4>Sesame Cake</h4>
+                        <p>This traditional snack is made with flour, sesame seeds, and various fillings. It's crispy on the outside and soft on the inside, with a sweet or savory flavor depending on the filling.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20rice%20porridge%20local%20breakfast&image_size=landscape_16_9" alt="Rice Porridge">
+                    </div>
+                    <div class="food-content">
+                        <h4>Rice Porridge</h4>
+                        <p>Nanjing-style rice porridge is a popular breakfast dish. It's often served with various side dishes, such as pickles, preserved eggs, and tofu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-top-section">
+                <h3>About Us</h3>
+                <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
+                <p class="hassle-text">Hassle no more!</p>
+            </div>
+            <div class="footer-bottom-sections">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: dynamicteams1122@gmail.com</p>
+                    <p>Whatsapp: +62 81318838877</p>
+                    <p>Wechat: Zhou_1177</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="WeChat">
+                            <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
+                        </a>
+                        <a href="#" class="social-link" title="Instagram">
+                            <img src="images/instagram.jpeg.png" alt="Instagram" width="20" height="20">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6281318838877" class="whatsapp-btn" target="_blank">
+        <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
