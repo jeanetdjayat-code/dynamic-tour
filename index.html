@@ -444,33 +444,110 @@
             }
         }
 
-        /* ----------------- PROVINCE GROUP ----------------- */
-        .province-group {
-            margin-bottom: 3rem;
+        /* ----------------- PROVINCE BUTTONS SECTION ----------------- */
+        .province-buttons-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray);
         }
-        .province-title {
+        .province-buttons-title {
             text-align: center;
-            margin-bottom: 1.5rem;
-            position: relative;
+            margin-bottom: 2rem;
         }
-        .province-title h3 {
-            color: var(--primary-light);
+        .province-buttons-title h3 {
+            color: var(--primary);
             font-size: clamp(1.2rem, 3vw, 1.6rem);
-            display: inline-block;
-            padding: 0 1rem;
-            background: var(--light);
-            position: relative;
-            z-index: 1;
         }
-        .province-title::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--gray);
-            z-index: 0;
+        .province-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .province-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .province-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        .province-btn.active {
+            background: var(--accent);
+        }
+        .province-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+        .province-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+        .province-cities-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .province-cities {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: slideDown 0.3s ease;
+        }
+        .province-cities.active {
+            display: block;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .province-cities h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .city-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .city-link {
+            display: inline-block;
+            background: var(--light);
+            color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .city-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            .province-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
         }
 
         /* ----------------- CULTURE SECTION (Enhanced + Mobile Optimized) ----------------- */
@@ -733,194 +810,184 @@
             <div class="section-title">
                 <h2>Top Destinations</h2>
             </div>
-
-            <!-- Beijing Municipality -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Beijing Municipality</h3>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20modern%20city&image_size=landscape_16_9" alt="Shanghai">
+                    </div>
+                    <div class="card-content">
+                        <h3>Shanghai</h3>
+                        <p>China's largest city and financial hub, Shanghai blends modern skyscrapers with historical neighborhoods like the Bund and French Concession.</p>
+                        <a href="shanghai.html" class="card-btn">Learn More</a>
+                    </div>
                 </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Beijing%20Forbidden%20City%20imperial%20palace&image_size=landscape_16_9" alt="Beijing">
-                        </div>
-                        <div class="card-content">
-                            <h3>Beijing</h3>
-                            <p>China's capital, home to iconic landmarks like the Forbidden City, Great Wall, and Temple of Heaven, steeped in thousands of years of history.</p>
-                            <a href="beijing.html" class="card-btn">Learn More</a>
-                        </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Beijing%20Forbidden%20City%20imperial%20palace&image_size=landscape_16_9" alt="Beijing">
+                    </div>
+                    <div class="card-content">
+                        <h3>Beijing</h3>
+                        <p>China's capital, home to iconic landmarks like the Forbidden City, Great Wall, and Temple of Heaven, steeped in thousands of years of history.</p>
+                        <a href="beijing.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="images/hangzhou.jpg" alt="Hangzhou">
+                    </div>
+                    <div class="card-content">
+                        <h3>Hangzhou</h3>
+                        <p>Famous for the scenic West Lake, Hangzhou is known as the "Paradise on Earth" with its beautiful gardens, temples, and tea plantations.</p>
+                        <a href="hangzhou.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Suzhou%20classical%20gardens%20traditional%20architecture&image_size=landscape_16_9" alt="Suzhou">
+                    </div>
+                    <div class="card-content">
+                        <h3>Suzhou</h3>
+                        <p>Known as the "Venice of the East," Suzhou is famous for its classical gardens, canals, and traditional silk production.</p>
+                        <a href="suzhou.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Wuhan%20Yellow%20Crane%20Tower%20cherry%20blossoms&image_size=landscape_16_9" alt="Wuhan">
+                    </div>
+                    <div class="card-content">
+                        <h3>Wuhan</h3>
+                        <p>Known as the "City of Sakura" for its stunning cherry blossoms in spring, Wuhan is located at the confluence of the Yangtze and Han Rivers, and is a major cultural and economic center with a rich history.</p>
+                        <a href="wuhan.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="images/orangeisle.jpg" alt="Changsha">
+                    </div>
+                    <div class="card-content">
+                        <h3>Changsha</h3>
+                        <p>Capital of Hunan Province, Changsha is known for its spicy cuisine, historical sites, and vibrant cultural scene.</p>
+                        <a href="changsha.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20ancient%20capital%20historical%20city&image_size=landscape_16_9" alt="Nanjing">
+                    </div>
+                    <div class="card-content">
+                        <h3>Nanjing</h3>
+                        <p>Former capital of China, Nanjing boasts historical landmarks like the Ming Xiaoling Mausoleum and the Nanjing City Wall.</p>
+                        <a href="nanjing.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="images/chengdu.jpg" alt="Chengdu">
+                    </div>
+                    <div class="card-content">
+                        <h3>Chengdu</h3>
+                        <p>Home of the giant pandas and the culinary capital of China, Chengdu offers ancient history, spicy Sichuan cuisine, and laid-back lifestyle.</p>
+                        <a href="chengdu.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="images/chongqing.jpg" alt="Chongqing">
+                    </div>
+                    <div class="card-content">
+                        <h3>Chongqing</h3>
+                        <p>The Mountain City famous for its stunning 3D landscape, spicy hotpot, breathtaking night views, and unique stilt house architecture.</p>
+                        <a href="chongqing.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1568322445389-72d3ffed6a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Fenghuang">
+                    </div>
+                    <div class="card-content">
+                        <h3>Fenghuang</h3>
+                        <p>Phoenix Ancient Town, one of China's most beautiful water towns with traditional stilt houses, stone bridges, and magical night views.</p>
+                        <a href="fenghuang.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1537538312208-c9b5d53a3ff9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie">
+                    </div>
+                    <div class="card-content">
+                        <h3>Zhangjiajie</h3>
+                        <p>The real Avatar Mountains with thousands of towering quartz sandstone pillars, glass bridges, and breathtaking natural scenery.</p>
+                        <a href="zhangjiajie.html" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Jiuzhaigou">
+                    </div>
+                    <div class="card-content">
+                        <h3>Jiuzhaigou</h3>
+                        <p>Fairyland of turquoise lakes, cascading waterfalls, and snow-capped mountains - one of China's most spectacular natural wonders.</p>
+                        <a href="jiuzhaigou.html" class="card-btn">Learn More</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Shanghai Municipality -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Shanghai Municipality</h3>
+            <!-- Province Buttons Section -->
+            <div class="province-buttons-section">
+                <div class="province-buttons-title">
+                    <h3>Browse by Province</h3>
                 </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20modern%20city&image_size=landscape_16_9" alt="Shanghai">
-                        </div>
-                        <div class="card-content">
-                            <h3>Shanghai</h3>
-                            <p>China's largest city and financial hub, Shanghai blends modern skyscrapers with historical neighborhoods like the Bund and French Concession.</p>
-                            <a href="shanghai.html" class="card-btn">Learn More</a>
+                <div class="province-buttons-container">
+                    <button class="province-btn" data-province="jiangsu">
+                        Jiangsu Province <span class="arrow">▼</span>
+                    </button>
+                    <button class="province-btn" data-province="zhejiang">
+                        Zhejiang Province <span class="arrow">▼</span>
+                    </button>
+                    <button class="province-btn" data-province="hubei">
+                        Hubei Province <span class="arrow">▼</span>
+                    </button>
+                    <button class="province-btn" data-province="hunan">
+                        Hunan Province <span class="arrow">▼</span>
+                    </button>
+                    <button class="province-btn" data-province="sichuan">
+                        Sichuan Province <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="province-cities-container">
+                    <div class="province-cities" data-province="jiangsu">
+                        <h4>Cities in Jiangsu Province:</h4>
+                        <div class="city-links">
+                            <a href="nanjing.html" class="city-link">Nanjing</a>
+                            <a href="suzhou.html" class="city-link">Suzhou</a>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Chongqing Municipality -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Chongqing Municipality</h3>
-                </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="images/chongqing.jpg" alt="Chongqing">
-                        </div>
-                        <div class="card-content">
-                            <h3>Chongqing</h3>
-                            <p>The Mountain City famous for its stunning 3D landscape, spicy hotpot, breathtaking night views, and unique stilt house architecture.</p>
-                            <a href="chongqing.html" class="card-btn">Learn More</a>
+                    <div class="province-cities" data-province="zhejiang">
+                        <h4>Cities in Zhejiang Province:</h4>
+                        <div class="city-links">
+                            <a href="hangzhou.html" class="city-link">Hangzhou</a>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Jiangsu Province -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Jiangsu Province</h3>
-                </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20ancient%20capital%20historical%20city&image_size=landscape_16_9" alt="Nanjing">
-                        </div>
-                        <div class="card-content">
-                            <h3>Nanjing</h3>
-                            <p>Former capital of China, Nanjing boasts historical landmarks like the Ming Xiaoling Mausoleum and the Nanjing City Wall.</p>
-                            <a href="nanjing.html" class="card-btn">Learn More</a>
+                    <div class="province-cities" data-province="hubei">
+                        <h4>Cities in Hubei Province:</h4>
+                        <div class="city-links">
+                            <a href="wuhan.html" class="city-link">Wuhan</a>
                         </div>
                     </div>
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Suzhou%20classical%20gardens%20traditional%20architecture&image_size=landscape_16_9" alt="Suzhou">
-                        </div>
-                        <div class="card-content">
-                            <h3>Suzhou</h3>
-                            <p>Known as the "Venice of the East," Suzhou is famous for its classical gardens, canals, and traditional silk production.</p>
-                            <a href="suzhou.html" class="card-btn">Learn More</a>
+                    <div class="province-cities" data-province="hunan">
+                        <h4>Cities in Hunan Province:</h4>
+                        <div class="city-links">
+                            <a href="changsha.html" class="city-link">Changsha</a>
+                            <a href="fenghuang.html" class="city-link">Fenghuang</a>
+                            <a href="zhangjiajie.html" class="city-link">Zhangjiajie</a>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Zhejiang Province -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Zhejiang Province</h3>
-                </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="images/hangzhou.jpg" alt="Hangzhou">
-                        </div>
-                        <div class="card-content">
-                            <h3>Hangzhou</h3>
-                            <p>Famous for the scenic West Lake, Hangzhou is known as the "Paradise on Earth" with its beautiful gardens, temples, and tea plantations.</p>
-                            <a href="hangzhou.html" class="card-btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hubei Province -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Hubei Province</h3>
-                </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Wuhan%20Yellow%20Crane%20Tower%20cherry%20blossoms&image_size=landscape_16_9" alt="Wuhan">
-                        </div>
-                        <div class="card-content">
-                            <h3>Wuhan</h3>
-                            <p>Known as the "City of Sakura" for its stunning cherry blossoms in spring, Wuhan is located at the confluence of the Yangtze and Han Rivers, and is a major cultural and economic center with a rich history.</p>
-                            <a href="wuhan.html" class="card-btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hunan Province -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Hunan Province</h3>
-                </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="images/orangeisle.jpg" alt="Changsha">
-                        </div>
-                        <div class="card-content">
-                            <h3>Changsha</h3>
-                            <p>Capital of Hunan Province, Changsha is known for its spicy cuisine, historical sites, and vibrant cultural scene.</p>
-                            <a href="changsha.html" class="card-btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1568322445389-72d3ffed6a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Fenghuang">
-                        </div>
-                        <div class="card-content">
-                            <h3>Fenghuang</h3>
-                            <p>Phoenix Ancient Town, one of China's most beautiful water towns with traditional stilt houses, stone bridges, and magical night views.</p>
-                            <a href="fenghuang.html" class="card-btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1537538312208-c9b5d53a3ff9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie">
-                        </div>
-                        <div class="card-content">
-                            <h3>Zhangjiajie</h3>
-                            <p>The real Avatar Mountains with thousands of towering quartz sandstone pillars, glass bridges, and breathtaking natural scenery.</p>
-                            <a href="zhangjiajie.html" class="card-btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sichuan Province -->
-            <div class="province-group">
-                <div class="province-title">
-                    <h3>Sichuan Province</h3>
-                </div>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="images/chengdu.jpg" alt="Chengdu">
-                        </div>
-                        <div class="card-content">
-                            <h3>Chengdu</h3>
-                            <p>Home of the giant pandas and the culinary capital of China, Chengdu offers ancient history, spicy Sichuan cuisine, and laid-back lifestyle.</p>
-                            <a href="chengdu.html" class="card-btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="destination-card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Jiuzhaigou">
-                        </div>
-                        <div class="card-content">
-                            <h3>Jiuzhaigou</h3>
-                            <p>Fairyland of turquoise lakes, cascading waterfalls, and snow-capped mountains - one of China's most spectacular natural wonders.</p>
-                            <a href="jiuzhaigou.html" class="card-btn">Learn More</a>
+                    <div class="province-cities" data-province="sichuan">
+                        <h4>Cities in Sichuan Province:</h4>
+                        <div class="city-links">
+                            <a href="chengdu.html" class="city-link">Chengdu</a>
+                            <a href="jiuzhaigou.html" class="city-link">Jiuzhaigou</a>
                         </div>
                     </div>
                 </div>
@@ -1021,6 +1088,29 @@
             } else {
                 navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
             }
+        });
+
+        // Province buttons toggle functionality
+        document.querySelectorAll('.province-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const province = this.getAttribute('data-province');
+                const isActive = this.classList.contains('active');
+
+                document.querySelectorAll('.province-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                document.querySelectorAll('.province-cities').forEach(cityDiv => {
+                    cityDiv.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    this.classList.add('active');
+                    const targetCityDiv = document.querySelector(`.province-cities[data-province="${province}"]`);
+                    if (targetCityDiv) {
+                        targetCityDiv.classList.add('active');
+                    }
+                }
+            });
         });
 
 
