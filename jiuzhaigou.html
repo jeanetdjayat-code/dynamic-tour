@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiuzhaigou - Dynamic Tour</title>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://jeanetdjayat-code.github.io/dynamic-tour/sitemap.xml">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #0F3057;
+            --primary-light: #1a4a7a;
+            --accent: #ff7d00;
+            --light: #f8f9fa;
+            --gray: #eee;
+            --dark: #333;
+            --wechat-green: #07C160;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 100px;
+            width: auto;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s;
+            padding: 0.2rem 0;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .menu-btn {
+            display: none;
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .menu-btn:hover {
+            background-color: var(--gray);
+        }
+
+        /* Mobile Responsive Navbar */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                gap: 1rem;
+                z-index: 999;
+                border-top: 2px solid var(--primary-light);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .logo-img {
+                height: 80px;
+            }
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            .logo-container {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            .logo-img {
+                height: 65px;
+            }
+            .nav-container {
+                padding: 0.6rem 0.8rem;
+            }
+            .nav-links {
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* Banner */
+        .banner {
+            height: clamp(250px, 50vw, 500px);
+            background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
+                        url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        .banner h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .banner p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* City Introduction */
+        .city-intro {
+            background: white;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        .intro-content {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .intro-content h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        .intro-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+        .intro-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Visit Time */
+        .visit-time {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 4px solid var(--accent);
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+        .visit-time h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .visit-time p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Attractions Section */
+        .attractions-section {
+            padding: 3rem 2rem;
+            background: white;
+        }
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .attraction {
+            max-width: 1000px;
+            margin: 3rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .attraction:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .attraction-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: white;
+        }
+        .attraction-img {
+            overflow: hidden;
+        }
+        .attraction-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .attraction:hover .attraction-img img {
+            transform: scale(1.05);
+        }
+        .attraction-text {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .attraction-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .attraction-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Responsive Attractions */
+        @media (max-width: 768px) {
+            .attraction-content {
+                grid-template-columns: 1fr;
+            }
+            .attraction-text {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Food Section */
+        .food-section {
+            padding: 3rem 2rem;
+            background: var(--light);
+        }
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .food-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .food-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .food-card:hover .food-img img {
+            transform: scale(1.05);
+        }
+        .food-content {
+            padding: 1.5rem;
+        }
+        .food-content h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        .food-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        .footer-contact {
+            margin-bottom: 1rem;
+        }
+        .footer-contact p {
+            margin: 0.5rem 0;
+        }
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media (max-width: 600px) {
+            .footer-links {
+                gap: 1rem;
+            }
+            .footer-links a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.jpeg.jpeg" alt="Dynamic Tour Logo" class="logo-img">
+                <span class="logo-text">Dynamic Tour</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#culture">Culture</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <button class="menu-btn" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <h1>Jiuzhaigou</h1>
+        <p>Discover China's Fairyland of Turquoise Lakes and Waterfalls</p>
+    </section>
+
+    <!-- City Introduction -->
+    <section class="city-intro">
+        <div class="intro-content">
+            <h2>Discover Jiuzhaigou</h2>
+            <p>Jiuzhaigou National Park, located in northern Sichuan Province, is one of China's most spectacular and beloved natural destinations. This UNESCO World Heritage Site is renowned for its stunning turquoise and emerald-colored lakes, cascading waterfalls, snow-capped mountain peaks, and ancient forests. The park's name means "Valley of Nine Villages," referring to the nine Tibetan villages scattered throughout the valley. Jiuzhaigou's unique karst landscape, combined with the mineral-rich waters that create the park's famous multi-colored lakes, makes it one of the most beautiful places on Earth. The park offers breathtaking hiking trails, scenic bus routes, and the chance to experience Tibetan culture and the region's incredible biodiversity.</p>
+        </div>
+    </section>
+
+    <!-- Visit Time -->
+    <section class="visit-time">
+        <h3>Suggested Visit Time</h3>
+        <p><strong>Recommended Duration:</strong> 2-3 days</p>
+        <p><strong>Best Time to Visit:</strong> September to October (autumn) when the leaves turn golden and red, creating a spectacular contrast with the turquoise lakes. Spring (April to May) offers beautiful wildflowers, while summer is lush and green. Winter (December to February) offers a magical snow-covered landscape with frozen waterfalls and fewer crowds.</p>
+    </section>
+
+    <!-- Attractions -->
+    <section class="attractions-section">
+        <h2 class="section-title">Main Tourist Attractions</h2>
+
+        <!-- Five Flower Lake -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Five Flower Lake">
+                </div>
+                <div class="attraction-text">
+                    <h3>Five Flower Lake</h3>
+                    <p>Five Flower Lake, also known as Wuhua Lake, is Jiuzhaigou's most famous and iconic lake, often called the "Jewel of Jiuzhaigou." This stunning lake is renowned for its incredible array of colors, ranging from turquoise and emerald to sapphire and amber, creating a mesmerizing kaleidoscope effect. The lake's clear waters reveal ancient tree trunks and branches submerged beneath the surface, adding to its mystical beauty.</p>
+                    <p>The lake's vibrant colors are created by a combination of mineral deposits, aquatic plants, and algae, which react with sunlight to produce the stunning rainbow effect. Visitors can walk along the wooden boardwalks surrounding the lake, enjoying views from different angles and heights. The lake is especially beautiful in autumn when the surrounding forest turns golden and red, creating a breathtaking reflection on the water's surface. Five Flower Lake is widely considered one of the most beautiful lakes in the world.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuorilang Waterfall -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Nuorilang Waterfall">
+                </div>
+                <div class="attraction-text">
+                    <h3>Nuorilang Waterfall</h3>
+                    <p>Nuorilang Waterfall is Jiuzhaigou's most spectacular waterfall and one of China's most famous waterfalls. Stretching an impressive 270 meters wide and dropping 24.5 meters, Nuorilang is the widest high-altitude waterfall in China. The waterfall cascades over a wide limestone cliff, creating a curtain of water that thunders into the valley below. The name "Nuorilang" means "grand and magnificent" in Tibetan, perfectly describing this natural wonder.</p>
+                    <p>Visitors can view the waterfall from multiple perspectives including from the opposite side of the valley, from the cliff top, and from below the falls. There's a spacious viewing platform that offers panoramic views of the entire waterfall. In summer, the waterfall is at its most dramatic with maximum water flow, while in winter it transforms into a stunning frozen spectacle with ice formations and icicles. The area around the waterfall also features beautiful forests and smaller streams, making it a popular spot for photography and nature appreciation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panda Lake -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Panda Lake">
+                </div>
+                <div class="attraction-text">
+                    <h3>Panda Lake</h3>
+                    <p>Panda Lake is one of Jiuzhaigou's most beautiful and tranquil lakes, named after the giant pandas that once roamed the area. The lake features stunning turquoise and blue-green waters that are incredibly clear and mirror-like. The lake's surface perfectly reflects the surrounding snow-capped mountains, ancient forests, and blue sky, creating breathtaking reflections that change with the seasons and time of day.</p>
+                    <p>The lake is surrounded by dense coniferous forests and offers peaceful walking trails along its shores. Visitors can enjoy the serene atmosphere, watch for wildlife, and take stunning photographs. Panda Lake is also famous for the Panda Waterfall located at its outlet, a beautiful multi-tiered waterfall that cascades down the mountain. The area is less crowded than some of Jiuzhaigou's other famous spots, offering a more peaceful experience. In autumn, the lake is surrounded by golden leaves, creating one of the park's most iconic views.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Long Lake -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Long Lake">
+                </div>
+                <div class="attraction-text">
+                    <h3>Long Lake</h3>
+                    <p>Long Lake, or Changhai, is Jiuzhaigou's largest, deepest, and highest-altitude lake, located at over 3,100 meters above sea level. This spectacular glacial lake stretches for over 7 kilometers and reaches depths of up to 103 meters, yet its waters remain crystal clear and display a range of beautiful blues and greens. The lake is surrounded by snow-capped mountains and ancient forests, creating a dramatic alpine landscape.</p>
+                    <p>Long Lake is especially beautiful in winter when it freezes over completely, creating a massive natural ice rink surrounded by snow-covered peaks. In summer, the lake's surface reflects the surrounding mountains and forests. The lake's remote location and high altitude mean it's often less crowded than other areas of the park, offering a peaceful escape. The area around the lake features beautiful hiking trails and opportunities to spot wildlife including Tibetan blue sheep and various bird species. Long Lake offers visitors a taste of the park's raw, untouched natural beauty.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arrow Bamboo Lake -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Arrow Bamboo Lake">
+                </div>
+                <div class="attraction-text">
+                    <h3>Arrow Bamboo Lake</h3>
+                    <p>Arrow Bamboo Lake is one of Jiuzhaigou's most picturesque lakes, named after the arrow bamboo that once grew abundantly around its shores. The lake features stunning emerald and turquoise waters that are perfectly still and reflective, creating mirror-like images of the surrounding mountains and forests. The lake's surface is so calm that it often creates perfect reflections, earning it a reputation as one of the park's most photogenic spots.</p>
+                    <p>The lake is surrounded by dense forests featuring various bamboo species, spruce, and fir trees. A scenic wooden boardwalk circles part of the lake, offering visitors different perspectives and beautiful photo opportunities. At the lake's outlet is the beautiful Arrow Bamboo Waterfall, a charming multi-tiered waterfall. The area around the lake offers excellent hiking opportunities and is known for its wildlife, including the possibility of spotting golden monkeys. Arrow Bamboo Lake is particularly beautiful in autumn when the surrounding foliage turns brilliant shades of gold and red.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Local Food -->
+    <section class="food-section">
+        <div class="food-container">
+            <h2 class="section-title">Local Food</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #666; line-height: 1.8;">Jiuzhaigou offers a unique blend of Tibetan and Sichuan cuisine, featuring hearty mountain dishes, dairy products, and bold flavors. The region's high altitude and cold climate have shaped a cuisine that's warming, nourishing, and deeply rooted in Tibetan culinary traditions.</p>
+
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Yak Hotpot">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tibetan Yak Hotpot</h4>
+                        <p>A must-try specialty in Jiuzhaigou, Tibetan yak hotpot features tender yak meat cooked in a rich, flavorful broth with various mushrooms, wild vegetables, and Tibetan herbs. The high-altitude yak meat is lean, flavorful, and highly nutritious, perfectly suited to the region's cold climate. The hotpot is often served with yak butter, tsampa, and Tibetan bread, creating a complete and hearty meal that's both delicious and warming.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Butter Tea">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tibetan Butter Tea</h4>
+                        <p>Tibetan butter tea, or po cha, is a traditional and staple beverage in Tibetan culture. Made from yak butter, tea leaves, salt, and sometimes milk, this rich, creamy tea provides essential calories and warmth for the high-altitude, cold climate. While its salty, buttery flavor might take some getting used to for visitors, it's an authentic taste of Tibetan culture and a must-try experience. The tea is traditionally served in wooden bowls and is a symbol of hospitality in Tibetan households.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tsampa">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tsampa</h4>
+                        <p>Tsampa is roasted barley flour, a staple food in Tibetan cuisine. The flour is typically mixed with butter tea, yak butter, and sometimes cheese or sugar to create a dense, nourishing food that's easy to carry and prepare at high altitudes. Visitors can try tsampa in various forms including as a porridge, mixed into dishes, or formed into balls. It's a traditional food that has sustained Tibetan communities for centuries and offers a unique taste of the region's culinary heritage.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Noodles">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tibetan Hand-Pulled Noodles</h4>
+                        <p>Tibetan hand-pulled noodles, or laghman, are a delicious and filling dish featuring thick, chewy noodles served in a savory broth with meat, vegetables, and spices. The noodles are handmade by skilled chefs who stretch and fold the dough multiple times to create the perfect texture. The dish is often served with yak meat, wild mountain vegetables, and fresh herbs, creating a hearty and flavorful meal that's especially comforting in Jiuzhaigou's cool mountain climate. It's a popular dish among both locals and visitors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#culture">Culture</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/15387312735" target="_blank">+86 153 8731 2735</a></p>
+                <p><strong>💬 WeChat:</strong> Jeanedjaya_t</p>
+                <p><strong>📧 Email:</strong> jeanet.djayat@qq.com</p>
+                <p><strong>📍 Location:</strong> Shanghai, China</p>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2024 Dynamic Tour. All rights reserved. | Exploring China Together</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

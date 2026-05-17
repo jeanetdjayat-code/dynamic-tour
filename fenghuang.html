@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenghuang - Dynamic Tour</title>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://jeanetdjayat-code.github.io/dynamic-tour/sitemap.xml">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #0F3057;
+            --primary-light: #1a4a7a;
+            --accent: #ff7d00;
+            --light: #f8f9fa;
+            --gray: #eee;
+            --dark: #333;
+            --wechat-green: #07C160;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 100px;
+            width: auto;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s;
+            padding: 0.2rem 0;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .menu-btn {
+            display: none;
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .menu-btn:hover {
+            background-color: var(--gray);
+        }
+
+        /* Mobile Responsive Navbar */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                gap: 1rem;
+                z-index: 999;
+                border-top: 2px solid var(--primary-light);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .logo-img {
+                height: 80px;
+            }
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            .logo-container {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            .logo-img {
+                height: 65px;
+            }
+            .nav-container {
+                padding: 0.6rem 0.8rem;
+            }
+            .nav-links {
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* Banner */
+        .banner {
+            height: clamp(250px, 50vw, 500px);
+            background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
+                        url('https://images.unsplash.com/photo-1568322445389-72d3ffed6a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        .banner h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .banner p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* City Introduction */
+        .city-intro {
+            background: white;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        .intro-content {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .intro-content h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        .intro-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+        .intro-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Visit Time */
+        .visit-time {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 4px solid var(--accent);
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+        .visit-time h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .visit-time p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Attractions Section */
+        .attractions-section {
+            padding: 3rem 2rem;
+            background: white;
+        }
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .attraction {
+            max-width: 1000px;
+            margin: 3rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .attraction:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .attraction-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: white;
+        }
+        .attraction-img {
+            overflow: hidden;
+        }
+        .attraction-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .attraction:hover .attraction-img img {
+            transform: scale(1.05);
+        }
+        .attraction-text {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .attraction-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .attraction-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Responsive Attractions */
+        @media (max-width: 768px) {
+            .attraction-content {
+                grid-template-columns: 1fr;
+            }
+            .attraction-text {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Food Section */
+        .food-section {
+            padding: 3rem 2rem;
+            background: var(--light);
+        }
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .food-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .food-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .food-card:hover .food-img img {
+            transform: scale(1.05);
+        }
+        .food-content {
+            padding: 1.5rem;
+        }
+        .food-content h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        .food-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        .footer-contact {
+            margin-bottom: 1rem;
+        }
+        .footer-contact p {
+            margin: 0.5rem 0;
+        }
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media (max-width: 600px) {
+            .footer-links {
+                gap: 1rem;
+            }
+            .footer-links a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.jpeg.jpeg" alt="Dynamic Tour Logo" class="logo-img">
+                <span class="logo-text">Dynamic Tour</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#culture">Culture</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <button class="menu-btn" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <h1>Fenghuang Ancient Town</h1>
+        <p>Discover the Magic of China's Most Beautiful Ancient Water Town</p>
+    </section>
+
+    <!-- City Introduction -->
+    <section class="city-intro">
+        <div class="intro-content">
+            <h2>Discover Fenghuang</h2>
+            <p>Fenghuang Ancient Town, also known as Phoenix Ancient Town, is a well-preserved historic town located in western Hunan Province. Built on the banks of the Tuojiang River, this picturesque town features traditional wooden stilt houses, stone bridges, and winding cobblestone streets that create a charming atmosphere from another era. Founded during the Ming Dynasty and flourishing in the Qing Dynasty, Fenghuang was once an important trading center on the ancient tea and salt route. Today, it's one of China's most popular tourist destinations, famous for its stunning night views, rich Miao and Tujia ethnic culture, and well-preserved ancient architecture.</p>
+        </div>
+    </section>
+
+    <!-- Visit Time -->
+    <section class="visit-time">
+        <h3>Suggested Visit Time</h3>
+        <p><strong>Recommended Duration:</strong> 2-3 days</p>
+        <p><strong>Best Time to Visit:</strong> March to May (spring) and September to November (autumn) when the weather is mild and comfortable. Avoid summer heat and winter cold. The town is especially beautiful in the early morning and at night when the lights reflect on the river.</p>
+    </section>
+
+    <!-- Attractions -->
+    <section class="attractions-section">
+        <h2 class="section-title">Main Tourist Attractions</h2>
+
+        <!-- Tuojiang River & Stilt Houses -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tuojiang River">
+                </div>
+                <div class="attraction-text">
+                    <h3>Tuojiang River & Stilt Houses</h3>
+                    <p>The Tuojiang River is the heart and soul of Fenghuang Ancient Town. The river winds through the town, with traditional wooden stilt houses (diaojiaolou) built along its banks, their foundations resting on stilts in the water. These unique structures are a masterpiece of Miao and Tujia ethnic architecture, perfectly adapted to life along the river.</p>
+                    <p>Visitors can take a leisurely bamboo raft ride down the river, passing under ancient stone bridges and alongside the beautiful stilt houses. The river is especially magical at night when thousands of red lanterns illuminate the town, creating a stunning reflection on the water that makes Fenghuang one of the most beautiful nighttime destinations in China.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hongqiao (Rainbow Bridge) -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Hongqiao">
+                </div>
+                <div class="attraction-text">
+                    <h3>Hongqiao (Rainbow Bridge)</h3>
+                    <p>Hongqiao, or Rainbow Bridge, is one of Fenghuang's most iconic landmarks. This beautiful wooden covered bridge spans the Tuojiang River, connecting the town's two sides. Built during the Ming Dynasty and restored in the Qing Dynasty, the bridge features traditional Chinese architecture with ornate wooden carvings and red lanterns.</p>
+                    <p>The bridge's upper level houses a tea house and shops selling local handicrafts, while the lower level offers stunning views of the river and surrounding stilt houses. Hongqiao is particularly famous for its picturesque views, especially at sunset and at night when the bridge is illuminated. It's also a popular spot for photographers and offers some of the best views of Fenghuang's skyline.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wanshou Palace -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Wanshou Palace">
+                </div>
+                <div class="attraction-text">
+                    <h3>Wanshou Palace</h3>
+                    <p>Wanshou Palace, or the Palace of Longevity, is an important historical and cultural site in Fenghuang. Built during the Qing Dynasty, this Taoist temple complex is dedicated to the worship of the local patron saint, Yang Zaosi. The palace features beautiful traditional Chinese architecture with ornate carvings, colorful decorations, and peaceful courtyards.</p>
+                    <p>Visitors can explore the temple halls, admire the ancient wooden architecture, and learn about Fenghuang's religious and cultural history. The palace also houses a small museum showcasing local artifacts and historical exhibits. Wanshou Palace offers a peaceful escape from the busy streets of the ancient town, providing visitors with insights into Fenghuang's rich spiritual heritage.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Miao Ethnic Culture Village -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Miao Ethnic Culture">
+                </div>
+                <div class="attraction-text">
+                    <h3>Miao Ethnic Culture Village</h3>
+                    <p>Fenghuang is located in a region with a rich Miao and Tujia ethnic heritage. Just outside the ancient town, visitors can explore traditional Miao villages where the ethnic minority groups still maintain their traditional way of life. These villages feature distinctive wooden stilt houses, beautiful terraced fields, and a unique cultural atmosphere.</p>
+                    <p>Visitors can experience traditional Miao music and dance performances, admire the beautiful hand-embroidered silver jewelry and clothing, and learn about the unique customs and traditions of the Miao people. Many villages offer homestay experiences, allowing visitors to immerse themselves in local culture. The Miao New Year celebrations and traditional festivals offer particularly fascinating insights into this vibrant ethnic culture.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nanhua Mountain -->
+        <section class="attraction">
+            <div class="attraction-content">
+                <div class="attraction-img">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Nanhua Mountain">
+                </div>
+                <div class="attraction-text">
+                    <h3>Nanhua Mountain</h3>
+                    <p>Nanhua Mountain is located near Fenghuang Ancient Town, offering stunning panoramic views of the entire town and surrounding countryside. The mountain features beautiful natural scenery with lush forests, clear streams, and several temples and pavilions along its hiking trails. It's a popular spot for nature lovers and those seeking a break from the busy town.</p>
+                    <p>The hiking trails on Nanhua Mountain vary in difficulty, from gentle walks to more challenging climbs. The mountain's peak offers the best views of Fenghuang Ancient Town, especially during sunrise and sunset. Visitors can also visit the Nanhua Temple, an ancient Buddhist temple located on the mountain, and enjoy the peaceful atmosphere and beautiful natural surroundings.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Local Food -->
+    <section class="food-section">
+        <div class="food-container">
+            <h2 class="section-title">Local Food</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #666; line-height: 1.8;">Fenghuang offers a delicious blend of Hunan and Miao ethnic cuisine, featuring bold flavors, fresh local ingredients, and unique cooking methods. The local food scene showcases the town's rich culinary heritage with dishes that are both flavorful and visually appealing.</p>
+
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Xue Tao Cai">
+                    </div>
+                    <div class="food-content">
+                        <h4>Xue Tao Cai (Blood Cake)</h4>
+                        <p>A traditional Miao and Tujia ethnic delicacy, Xue Tao Cai is made from glutinous rice, pork, and pig blood, steamed and served with various seasonings. The dish has a unique texture and rich, savory flavor that's deeply rooted in local culinary traditions. It's often served during festivals and special occasions.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Miao Sour Soup">
+                    </div>
+                    <div class="food-content">
+                        <h4>Miao Sour Soup</h4>
+                        <p>A signature dish of the Miao ethnic group, this sour soup is made with fermented rice or tomatoes, creating a tangy, appetizing broth. The soup typically includes fish, meat, or vegetables, with the sourness perfectly balanced by fresh herbs and chili peppers. It's a comforting and refreshing dish that represents the unique culinary identity of the Miao people.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Smoked Pork">
+                    </div>
+                    <div class="food-content">
+                        <h4>Smoked Pork with Wild Vegetables</h4>
+                        <p>Fenghuang is famous for its traditional smoked pork, cured and smoked over wood fires for weeks. The tender, flavorful pork is often stir-fried with wild mountain vegetables like bracken fern or bamboo shoots, creating a perfect combination of smoky, savory, and slightly bitter flavors. This dish showcases the traditional preservation methods used in mountainous regions.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Rice Noodles">
+                    </div>
+                    <div class="food-content">
+                        <h4>Fenghuang Rice Noodles</h4>
+                        <p>A popular breakfast and street food in Fenghuang, these rice noodles are served in a flavorful broth with various toppings including braised pork, pickled vegetables, peanuts, and fresh herbs. The noodles are freshly made and have a chewy texture, while the broth is rich and aromatic. It's a simple yet delicious dish that's perfect for starting your day exploring the ancient town.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#culture">Culture</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/15387312735" target="_blank">+86 153 8731 2735</a></p>
+                <p><strong>💬 WeChat:</strong> Jeanedjaya_t</p>
+                <p><strong>📧 Email:</strong> jeanet.djayat@qq.com</p>
+                <p><strong>📍 Location:</strong> Shanghai, China</p>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2024 Dynamic Tour. All rights reserved. | Exploring China Together</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
