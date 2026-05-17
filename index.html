@@ -569,10 +569,108 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .map-container img {
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .map-background {
             width: 100%;
             height: auto;
             display: block;
+        }
+        .map-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .map-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            pointer-events: auto;
+            z-index: 10;
+        }
+        .marker-dot {
+            width: 16px;
+            height: 16px;
+            background: #ff6b35;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+            transition: transform 0.3s ease;
+        }
+        .map-marker:hover .marker-dot {
+            transform: scale(1.3);
+            background: #ff8c5a;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(255, 107, 53, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+            }
+        }
+        .marker-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .map-marker:hover .marker-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .marker-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 10px solid transparent;
+            border-top-color: white;
+        }
+        .tooltip-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        .tooltip-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tooltip-content {
+            padding: 12px;
+            text-align: left;
+        }
+        .tooltip-content h4 {
+            margin: 0 0 6px 0;
+            color: #2c5aa0;
+            font-size: 1rem;
+        }
+        .tooltip-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         /* ----------------- CULTURE SECTION (Enhanced + Mobile Optimized) ----------------- */
@@ -1021,46 +1119,170 @@
                 <div class="map-section">
                     <div class="map-title">
                         <h3>China Provinces Map</h3>
+                        <p style="color: #666; margin-top: 0.5rem;">Hover over the markers to explore each city</p>
                     </div>
-                    <div class="map-container" style="background: #f8f9fa; padding: 2rem; border-radius: 12px;">
-                        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
-                            <defs>
-                                <linearGradient id="chinaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#e8f4e8;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#d4e8d4;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <rect x="0" y="0" width="800" height="500" fill="#f0f5f0"/>
+                    <div class="map-container">
+                        <div class="map-wrapper">
+                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=800&q=80" alt="China Map" class="map-background">
                             
-                            <path d="M200,80 L350,60 L500,70 L600,90 L680,120 L720,160 L740,220 L730,280 L700,320 L650,340 L580,350 L520,330 L480,280 L420,260 L380,240 L340,250 L300,230 L280,190 L250,170 L220,150 L200,120 Z" fill="url(#chinaGrad)" stroke="#2c5aa0" stroke-width="2"/>
-                            
-                            <path d="M380,100 L420,90 L450,100 L440,140 L400,150 L370,130 Z" fill="#e74c3c" stroke="#2c5aa0" stroke-width="1"/>
-                            <text x="400" y="130" text-anchor="middle" font-size="11" font-weight="bold" fill="#c0392b">Jiangsu</text>
-                            
-                            <path d="M440,140 L480,130 L510,145 L500,180 L460,185 L430,165 Z" fill="#3498db" stroke="#2c5aa0" stroke-width="1"/>
-                            <text x="465" y="165" text-anchor="middle" font-size="11" font-weight="bold" fill="#2980b9">Zhejiang</text>
-                            
-                            <path d="M340,180 L390,175 L420,195 L400,230 L350,235 L320,210 Z" fill="#9b59b6" stroke="#2c5aa0" stroke-width="1"/>
-                            <text x="365" y="210" text-anchor="middle" font-size="11" font-weight="bold" fill="#8e44ad">Hubei</text>
-                            
-                            <path d="M380,240 L430,235 L470,260 L450,300 L400,305 L360,280 Z" fill="#1abc9c" stroke="#2c5aa0" stroke-width="1"/>
-                            <text x="410" y="275" text-anchor="middle" font-size="11" font-weight="bold" fill="#16a085">Hunan</text>
-                            
-                            <path d="M280,280 L350,275 L400,295 L380,340 L320,350 L270,320 Z" fill="#e67e22" stroke="#2c5aa0" stroke-width="1"/>
-                            <text x="330" y="315" text-anchor="middle" font-size="11" font-weight="bold" fill="#d35400">Sichuan</text>
-                            
-                            <circle cx="650" cy="420" r="5" fill="#e74c3c"/>
-                            <text x="655" y="423" font-size="10" fill="#c0392b">Beijing</text>
-                            
-                            <circle cx="680" cy="440" r="5" fill="#3498db"/>
-                            <text x="685" y="443" font-size="10" fill="#2980b9">Shanghai</text>
-                            
-                            <circle cx="620" cy="460" r="5" fill="#2c3e50"/>
-                            <text x="625" y="463" font-size="10" fill="#2c3e50">Chongqing</text>
-                            
-                            <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c5aa0">CHINA</text>
-                            <text x="400" y="50" text-anchor="middle" font-size="12" fill="#7f8c8d">Provinces Map</text>
-                        </svg>
+                            <div class="map-markers">
+                                <div class="map-marker" data-city="beijing" style="top: 20%; left: 58%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1584467541268-b040f83be3fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Beijing">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Beijing</h4>
+                                            <p>Capital of China - Forbidden City, Great Wall, Temple of Heaven</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="shanghai" style="top: 42%; left: 75%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Shanghai">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Shanghai</h4>
+                                            <p>Modern metropolis - Bund, Yu Garden, Shanghai Tower</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="nanjing" style="top: 40%; left: 65%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Nanjing">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Nanjing</h4>
+                                            <p>Jiangsu Province - Confucius Temple, Sun Yat-sen Mausoleum</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="suzhou" style="top: 45%; left: 68%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1545893835-abaa50cbe628?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Suzhou">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Suzhou</h4>
+                                            <p>Jiangsu Province - Classical Gardens, Tiger Hill</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="hangzhou" style="top: 50%; left: 68%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Hangzhou">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Hangzhou</h4>
+                                            <p>Zhejiang Province - West Lake, Lingyin Temple</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="wuhan" style="top: 48%; left: 52%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Wuhan">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Wuhan</h4>
+                                            <p>Hubei Province - Yellow Crane Tower, East Lake</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="changsha" style="top: 55%; left: 55%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Changsha">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Changsha</h4>
+                                            <p>Hunan Province - Orange Island, Yuelu Mountain</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="fenghuang" style="top: 58%; left: 48%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="images/fenghuang.jpeg" alt="Fenghuang">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Fenghuang</h4>
+                                            <p>Hunan Province - Phoenix Ancient Town, Tuojiang River</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="zhangjiajie" style="top: 52%; left: 42%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="images/zhangjiajie.jpg" alt="Zhangjiajie">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Zhangjiajie</h4>
+                                            <p>Hunan Province - Avatar Mountains, Tianmen Mountain</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="chengdu" style="top: 60%; left: 30%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="images/chengdu.jpg" alt="Chengdu">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Chengdu</h4>
+                                            <p>Sichuan Province - Giant Pandas, Jinsha Site</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="chongqing" style="top: 62%; left: 38%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="images/chongqing.jpg" alt="Chongqing">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Chongqing</h4>
+                                            <p>Mountain City - Hongyadong, Ciqikou Ancient Town</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-marker" data-city="jiuzhaigou" style="top: 45%; left: 25%;">
+                                    <div class="marker-dot"></div>
+                                    <div class="marker-tooltip">
+                                        <div class="tooltip-image">
+                                            <img src="images/jiuzhaigou.jpg" alt="Jiuzhaigou">
+                                        </div>
+                                        <div class="tooltip-content">
+                                            <h4>Jiuzhaigou</h4>
+                                            <p>Sichuan Province - Turquoise Lakes, Waterfalls, Nature Reserve</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1181,6 +1403,16 @@
                     if (targetCityDiv) {
                         targetCityDiv.classList.add('active');
                     }
+                }
+            });
+        });
+
+        // Map markers click functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const city = this.getAttribute('data-city');
+                if (city) {
+                    window.location.href = city + '.html';
                 }
             });
         });
