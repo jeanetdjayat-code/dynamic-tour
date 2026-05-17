@@ -245,60 +245,73 @@
         }
 
         .attraction {
-            max-width: 1000px;
-            margin: 3rem auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .attraction:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            margin-bottom: 3rem;
         }
         .attraction-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 2rem;
-            background: white;
+            flex-wrap: wrap;
+            align-items: center;
         }
         .attraction-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .attraction-img img {
             width: 100%;
             aspect-ratio: 16/9;
             object-fit: cover;
-            transition: transform 0.5s ease;
             display: block;
         }
-        .attraction:hover .attraction-img img {
-            transform: scale(1.05);
-        }
         .attraction-text {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex: 1;
+            min-width: 300px;
         }
         .attraction-text h3 {
-            font-size: 1.5rem;
             color: var(--primary);
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
         .attraction-text p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
-
-        /* Responsive Attractions */
+        
+        /* Mobile optimization for attractions */
         @media (max-width: 768px) {
             .attraction-content {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+            .attraction-img {
+                order: 1;
+                width: 100%;
             }
             .attraction-text {
-                padding: 1.5rem;
+                order: 2;
+                width: 100%;
+            }
+            .attraction {
+                margin-bottom: 2rem;
+            }
+            .attraction-text p {
+                margin-bottom: 0.6rem;
+                line-height: 1.5;
+            }
+            .attraction-text h3 {
+                margin-bottom: 0.8rem;
+            }
+            .visit-time {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+            }
+            .visit-time-content h3 {
+                font-size: 1.3rem;
+            }
+            .visit-time-content p {
+                font-size: 0.9rem;
             }
         }
 

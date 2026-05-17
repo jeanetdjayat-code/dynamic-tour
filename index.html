@@ -1123,10 +1123,73 @@
                     </div>
                     <div class="map-container">
                         <div class="map-wrapper">
-                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=800&q=80" alt="China Map" class="map-background">
+                            <svg viewBox="0 0 1200 700" class="map-background" style="width: 100%; height: auto; background: linear-gradient(135deg, #e8f4e8 0%, #d4e8d4 100%);">
+                                <defs>
+                                    <linearGradient id="chinaMain" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#f0e6d6;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#e8dcc8;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="provinceJiangsu" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ffb3b3;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#ff8080;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="provinceZhejiang" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#b3d9ff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#80b3ff;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="provinceHubei" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#d9b3ff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#b380ff;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="provinceHunan" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#b3ffcc;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#80ffaa;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="provinceSichuan" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ffd9b3;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#ffb380;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <rect x="0" y="0" width="1200" height="700" fill="#f5f9f5"/>
+                                
+                                <text x="600" y="50" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c5aa0">CHINA</text>
+                                <text x="600" y="80" text-anchor="middle" font-size="16" fill="#7f8c8d">Explore Our Destinations</text>
+                                
+                                <path d="M350,120 L450,100 L550,95 L650,100 L750,110 L820,130 L880,150 L930,170 L960,190 L970,220 L965,260 L950,290 L930,320 L900,350 L860,370 L820,380 L780,385 L740,380 L700,365 L660,345 L620,320 L580,295 L540,270 L500,250 L460,240 L420,245 L380,260 L340,280 L300,260 L280,230 L260,200 L250,170 L260,145 L290,130 Z" 
+                                      fill="url(#chinaMain)" stroke="#8b7355" stroke-width="3"/>
+                                
+                                <path d="M680,140 L720,135 L740,150 L735,165 L700,175 L675,165 L670,150 Z" fill="#ffcccc" stroke="#cc6666" stroke-width="1.5"/>
+                                <text x="705" y="158" text-anchor="middle" font-size="10" font-weight="bold" fill="#993333">Beijing</text>
+                                
+                                <path d="M750,260 L790,255 L810,270 L800,290 L760,295 L740,280 Z" fill="#ccddff" stroke="#6688cc" stroke-width="1.5"/>
+                                <text x="775" y="278" text-anchor="middle" font-size="10" font-weight="bold" fill="#335599">Shanghai</text>
+                                
+                                <path d="M650,250 L710,245 L740,260 L735,285 L700,295 L660,285 L645,265 Z" fill="url(#provinceJiangsu)" stroke="#cc6666" stroke-width="1.5"/>
+                                <text x="695" y="272" text-anchor="middle" font-size="11" font-weight="bold" fill="#993333">Jiangsu</text>
+                                
+                                <path d="M700,290 L750,285 L770,305 L760,330 L720,335 L690,320 Z" fill="url(#provinceZhejiang)" stroke="#6688cc" stroke-width="1.5"/>
+                                <text x="730" y="315" text-anchor="middle" font-size="11" font-weight="bold" fill="#335599">Zhejiang</text>
+                                
+                                <path d="M550,280 L610,275 L640,295 L630,325 L580,335 L535,320 L530,295 Z" fill="url(#provinceHubei)" stroke="#8866cc" stroke-width="1.5"/>
+                                <text x="585" y="305" text-anchor="middle" font-size="11" font-weight="bold" fill="#553399">Hubei</text>
+                                
+                                <path d="M560,340 L620,335 L650,355 L640,390 L590,400 L545,385 L535,360 Z" fill="url(#provinceHunan)" stroke="#44aa66" stroke-width="1.5"/>
+                                <text x="590" y="370" text-anchor="middle" font-size="11" font-weight="bold" fill="#227744">Hunan</text>
+                                
+                                <path d="M350,350 L430,340 L470,360 L465,395 L410,410 L345,400 L320,375 Z" fill="url(#provinceSichuan)" stroke="#cc8844" stroke-width="1.5"/>
+                                <text x="395" y="380" text-anchor="middle" font-size="11" font-weight="bold" fill="#995522">Sichuan</text>
+                                
+                                <path d="M450,360 L500,355 L520,375 L510,400 L470,410 L440,390 Z" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+                                <text x="480" y="385" text-anchor="middle" font-size="10" font-weight="bold" fill="#555555">Chongqing</text>
+                                
+                                <line x1="350" y1="120" x2="350" y2="420" stroke="#2c5aa0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.3"/>
+                                <line x1="600" y1="100" x2="600" y2="420" stroke="#2c5aa0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.3"/>
+                                <line x1="850" y1="130" x2="850" y2="420" stroke="#2c5aa0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.3"/>
+                            </svg>
                             
                             <div class="map-markers">
-                                <div class="map-marker" data-city="beijing" style="top: 20%; left: 58%;">
+                                <div class="map-marker" data-city="beijing" style="top: 22%; left: 59%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
@@ -1139,7 +1202,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="shanghai" style="top: 42%; left: 75%;">
+                                <div class="map-marker" data-city="shanghai" style="top: 40%; left: 65%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
@@ -1152,11 +1215,11 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="nanjing" style="top: 40%; left: 65%;">
+                                <div class="map-marker" data-city="nanjing" style="top: 39%; left: 58%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
-                                            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Nanjing">
+                                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20ancient%20capital%20historical%20city&image_size=landscape_16_9" alt="Nanjing">
                                         </div>
                                         <div class="tooltip-content">
                                             <h4>Nanjing</h4>
@@ -1165,11 +1228,11 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="suzhou" style="top: 45%; left: 68%;">
+                                <div class="map-marker" data-city="suzhou" style="top: 41%; left: 60%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
-                                            <img src="https://images.unsplash.com/photo-1545893835-abaa50cbe628?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Suzhou">
+                                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Suzhou%20classical%20gardens%20traditional%20architecture&image_size=landscape_16_9" alt="Suzhou">
                                         </div>
                                         <div class="tooltip-content">
                                             <h4>Suzhou</h4>
@@ -1178,11 +1241,11 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="hangzhou" style="top: 50%; left: 68%;">
+                                <div class="map-marker" data-city="hangzhou" style="top: 45%; left: 61%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
-                                            <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Hangzhou">
+                                            <img src="images/hangzhou.jpg" alt="Hangzhou">
                                         </div>
                                         <div class="tooltip-content">
                                             <h4>Hangzhou</h4>
@@ -1191,11 +1254,11 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="wuhan" style="top: 48%; left: 52%;">
+                                <div class="map-marker" data-city="wuhan" style="top: 43%; left: 49%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
-                                            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Wuhan">
+                                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Wuhan%20Yellow%20Crane%20Tower%20cherry%20blossoms&image_size=landscape_16_9" alt="Wuhan">
                                         </div>
                                         <div class="tooltip-content">
                                             <h4>Wuhan</h4>
@@ -1204,11 +1267,11 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="changsha" style="top: 55%; left: 55%;">
+                                <div class="map-marker" data-city="changsha" style="top: 52%; left: 50%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
-                                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Changsha">
+                                            <img src="images/orangeisle.jpg" alt="Changsha">
                                         </div>
                                         <div class="tooltip-content">
                                             <h4>Changsha</h4>
@@ -1217,7 +1280,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="fenghuang" style="top: 58%; left: 48%;">
+                                <div class="map-marker" data-city="fenghuang" style="top: 54%; left: 47%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
@@ -1230,7 +1293,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="zhangjiajie" style="top: 52%; left: 42%;">
+                                <div class="map-marker" data-city="zhangjiajie" style="top: 50%; left: 44%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
@@ -1243,7 +1306,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="chengdu" style="top: 60%; left: 30%;">
+                                <div class="map-marker" data-city="chengdu" style="top: 55%; left: 33%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
@@ -1256,7 +1319,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="chongqing" style="top: 62%; left: 38%;">
+                                <div class="map-marker" data-city="chongqing" style="top: 56%; left: 40%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
@@ -1269,7 +1332,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="map-marker" data-city="jiuzhaigou" style="top: 45%; left: 25%;">
+                                <div class="map-marker" data-city="jiuzhaigou" style="top: 48%; left: 28%;">
                                     <div class="marker-dot"></div>
                                     <div class="marker-tooltip">
                                         <div class="tooltip-image">
