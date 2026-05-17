@@ -550,6 +550,31 @@
             }
         }
 
+        /* ----------------- MAP SECTION ----------------- */
+        .map-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .map-title {
+            margin-bottom: 1.5rem;
+        }
+        .map-title h3 {
+            color: var(--primary);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        }
+        .map-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* ----------------- CULTURE SECTION (Enhanced + Mobile Optimized) ----------------- */
         .culture-section {
             background: white;
@@ -989,6 +1014,16 @@
                             <a href="chengdu.html" class="city-link">Chengdu</a>
                             <a href="jiuzhaigou.html" class="city-link">Jiuzhaigou</a>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="map-title">
+                        <h3>China Provinces Map</h3>
+                    </div>
+                    <div class="map-container">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20political%20map%20showing%20provinces%20Jiangsu%20Zhejiang%20Hubei%20Hunan%20Sichuan%20with%20clear%20labels%20colorful%20educational%20style&image_size=landscape_16_9" alt="China Provinces Map">
                     </div>
                 </div>
             </div>
