@@ -317,26 +317,24 @@
 
         /* Food Section */
         .food-section {
-            padding: 3rem 2rem;
-            background: var(--light);
+            margin-top: 4rem;
         }
         .food-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            margin-top: 2rem;
         }
         .food-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .food-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         .food-img {
             height: 200px;
@@ -346,7 +344,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
         .food-card:hover .food-img img {
             transform: scale(1.05);
@@ -355,67 +353,67 @@
             padding: 1.5rem;
         }
         .food-content h4 {
-            font-size: 1.2rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
         .food-content p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* Footer */
-        .footer {
+        footer {
             background: var(--primary);
             color: white;
-            padding: 2rem 1rem;
-            text-align: center;
+            padding: 3rem 1rem 1rem;
         }
         .footer-content {
             max-width: 1200px;
-            margin: auto;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        .footer-contact {
+        .footer-top-section h3, .footer-section h3 {
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
-        .footer-contact p {
-            margin: 0.5rem 0;
+        .footer-top-section p, .footer-section p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
-        .footer-contact a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .footer-copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
+        .hassle-text {
+            color: var(--accent) !important;
+            font-weight: bold;
             margin-top: 1rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
         }
-
-        @media (max-width: 600px) {
-            .footer-links {
-                gap: 1rem;
-            }
-            .footer-links a {
-                font-size: 0.9rem;
-            }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .social-link:hover {
+            background: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
         }
     </style>
 </head>
@@ -470,8 +468,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Five Flower Lake</h3>
-                    <p>Five Flower Lake, also known as Wuhua Lake, is Jiuzhaigou's most famous and iconic lake, often called the "Jewel of Jiuzhaigou." This stunning lake is renowned for its incredible array of colors, ranging from turquoise and emerald to sapphire and amber, creating a mesmerizing kaleidoscope effect. The lake's clear waters reveal ancient tree trunks and branches submerged beneath the surface, adding to its mystical beauty.</p>
-                    <p>The lake's vibrant colors are created by a combination of mineral deposits, aquatic plants, and algae, which react with sunlight to produce the stunning rainbow effect. Visitors can walk along the wooden boardwalks surrounding the lake, enjoying views from different angles and heights. The lake is especially beautiful in autumn when the surrounding forest turns golden and red, creating a breathtaking reflection on the water's surface. Five Flower Lake is widely considered one of the most beautiful lakes in the world.</p>
+                    <p>Jiuzhaigou's most famous and iconic lake, often called the "Jewel of Jiuzhaigou," renowned for its incredible array of colors from turquoise to sapphire.</p>
+                    <p>The lake's vibrant colors are created by mineral deposits, aquatic plants, and algae reacting with sunlight. Visitors can walk along wooden boardwalks surrounding the lake.</p>
                 </div>
             </div>
         </section>
@@ -484,8 +482,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Long Lake</h3>
-                    <p>Long Lake, or Changhai, is Jiuzhaigou's largest, deepest, and highest-altitude lake, located at over 3,100 meters above sea level. This spectacular glacial lake stretches for over 7 kilometers and reaches depths of up to 103 meters, yet its waters remain crystal clear and display a range of beautiful blues and greens. The lake is surrounded by snow-capped mountains and ancient forests, creating a dramatic alpine landscape.</p>
-                    <p>Long Lake is especially beautiful in winter when it freezes over completely, creating a massive natural ice rink surrounded by snow-covered peaks. In summer, the lake's surface reflects the surrounding mountains and forests. The lake's remote location and high altitude mean it's often less crowded than other areas of the park, offering a peaceful escape. The area around the lake features beautiful hiking trails and opportunities to spot wildlife including Tibetan blue sheep and various bird species. Long Lake offers visitors a taste of the park's raw, untouched natural beauty.</p>
+                    <p>Jiuzhaigou's largest, deepest, and highest-altitude lake at over 3,100 meters, stretching 7 kilometers with crystal clear waters.</p>
+                    <p>Especially beautiful in winter when it freezes over completely, and in summer when the lake reflects surrounding snow-capped mountains and forests.</p>
                 </div>
             </div>
         </section>
@@ -498,8 +496,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Multi-Color Pond</h3>
-                    <p>Multi-Color Pond, also known as Wucai Pond, is one of Jiuzhaigou's smallest but most spectacular and colorful lakes. Located at an altitude of 2,995 meters, this stunning pond features water that changes colors dramatically, displaying brilliant shades of turquoise, emerald, sapphire, and even golden hues. Despite its relatively small size, Multi-Color Pond is considered one of Jiuzhaigou's most precious gems and a must-visit attraction.</p>
-                    <p>The pond's ever-changing colors are created by the interaction of sunlight with mineral-rich waters, calcium carbonate deposits, and various algae and aquatic plants. Visitors can walk along elevated wooden walkways that circle the pond, enjoying unobstructed views from every angle. The water is so clear that the ancient tree trunks and pebbles at the bottom are perfectly visible. Multi-Color Pond is especially beautiful in autumn when the surrounding golden foliage creates a stunning contrast with the pond's vibrant colors, making it one of Jiuzhaigou's most photographed locations.</p>
+                    <p>One of Jiuzhaigou's smallest but most spectacular lakes, featuring water that changes colors dramatically from turquoise to golden hues.</p>
+                    <p>Visitors can walk along elevated wooden walkways circling the pond, with water so clear that ancient tree trunks at the bottom are perfectly visible.</p>
                 </div>
             </div>
         </section>
@@ -512,8 +510,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Nuorilang Waterfall</h3>
-                    <p>Nuorilang Waterfall is Jiuzhaigou's most spectacular waterfall and one of China's most famous waterfalls. Stretching an impressive 270 meters wide and dropping 24.5 meters, Nuorilang is the widest high-altitude waterfall in China. The waterfall cascades over a wide limestone cliff, creating a curtain of water that thunders into the valley below. The name "Nuorilang" means "grand and magnificent" in Tibetan, perfectly describing this natural wonder.</p>
-                    <p>Visitors can view the waterfall from multiple perspectives including from the opposite side of the valley, from the cliff top, and from below the falls. There's a spacious viewing platform that offers panoramic views of the entire waterfall. In summer, the waterfall is at its most dramatic with maximum water flow, while in winter it transforms into a stunning frozen spectacle with ice formations and icicles. The area around the waterfall also features beautiful forests and smaller streams, making it a popular spot for photography and nature appreciation.</p>
+                    <p>Jiuzhaigou's most spectacular waterfall, stretching 270 meters wide and dropping 24.5 meters, the widest high-altitude waterfall in China.</p>
+                    <p>Visitors can view the waterfall from multiple perspectives including the cliff top and below. In winter, it transforms into a stunning frozen spectacle.</p>
                 </div>
             </div>
         </section>
@@ -526,8 +524,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Shuzheng Lakes</h3>
-                    <p>Shuzheng Lakes is a beautiful chain of 19 interconnected lakes cascading down a mountain valley, forming one of Jiuzhaigou's most picturesque and accessible scenic areas. The lakes vary in size, shape, and color, ranging from deep turquoise to brilliant emerald, creating a stunning visual display as they flow into one another through natural dams. The area gets its name from the nearby Shuzheng Village, one of the nine Tibetan villages in Jiuzhaigou.</p>
-                    <p>Visitors can explore the Shuzheng Lakes via well-maintained wooden boardwalks that wind through the valley, offering close-up views of the cascading lakes and connecting waterfalls. The famous Shuzheng Waterfall, a 20-meter-high multi-tiered waterfall, is a highlight of the area. The valley also features ancient Tibetan prayer wheels, traditional wooden bridges, and opportunities to experience Tibetan culture at the nearby village. Shuzheng Lakes offers a perfect introduction to Jiuzhaigou's natural beauty, with relatively easy terrain and stunning views at every turn.</p>
+                    <p>A beautiful chain of 19 interconnected lakes cascading down a mountain valley, varying in size, shape, and color from turquoise to emerald.</p>
+                    <p>Visitors can explore via well-maintained wooden boardwalks, with highlights including the 20-meter-high multi-tiered Shuzheng Waterfall.</p>
                 </div>
             </div>
         </section>
@@ -535,87 +533,99 @@
 
     <!-- Local Food -->
     <section class="food-section">
-        <div class="food-container">
-            <h2 class="section-title">Local Food</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #666; line-height: 1.8;">Jiuzhaigou offers a unique blend of Tibetan and Sichuan cuisine, featuring hearty mountain dishes, dairy products, and bold flavors. The region's high altitude and cold climate have shaped a cuisine that's warming, nourishing, and deeply rooted in Tibetan culinary traditions.</p>
-
-            <div class="food-grid">
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Yak Hotpot">
-                    </div>
-                    <div class="food-content">
-                        <h4>Tibetan Yak Hotpot</h4>
-                        <p>A must-try specialty in Jiuzhaigou, Tibetan yak hotpot features tender yak meat cooked in a rich, flavorful broth with various mushrooms, wild vegetables, and Tibetan herbs. The high-altitude yak meat is lean, flavorful, and highly nutritious, perfectly suited to the region's cold climate. The hotpot is often served with yak butter, tsampa, and Tibetan bread, creating a complete and hearty meal that's both delicious and warming.</p>
-                    </div>
+        <div class="section-title">
+            <h2>Local Food</h2>
+            <p>Jiuzhaigou offers a unique blend of Tibetan and Sichuan cuisine, featuring hearty mountain dishes, dairy products, and bold flavors.</p>
+        </div>
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Yak Hotpot">
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Butter Tea">
-                    </div>
-                    <div class="food-content">
-                        <h4>Tibetan Butter Tea</h4>
-                        <p>Tibetan butter tea, or po cha, is a traditional and staple beverage in Tibetan culture. Made from yak butter, tea leaves, salt, and sometimes milk, this rich, creamy tea provides essential calories and warmth for the high-altitude, cold climate. While its salty, buttery flavor might take some getting used to for visitors, it's an authentic taste of Tibetan culture and a must-try experience. The tea is traditionally served in wooden bowls and is a symbol of hospitality in Tibetan households.</p>
-                    </div>
+                <div class="food-content">
+                    <h4>Tibetan Yak Hotpot</h4>
+                    <p>A must-try specialty featuring tender yak meat cooked in rich broth with various mushrooms, wild vegetables, and Tibetan herbs.</p>
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tsampa">
-                    </div>
-                    <div class="food-content">
-                        <h4>Tsampa</h4>
-                        <p>Tsampa is roasted barley flour, a staple food in Tibetan cuisine. The flour is typically mixed with butter tea, yak butter, and sometimes cheese or sugar to create a dense, nourishing food that's easy to carry and prepare at high altitudes. Visitors can try tsampa in various forms including as a porridge, mixed into dishes, or formed into balls. It's a traditional food that has sustained Tibetan communities for centuries and offers a unique taste of the region's culinary heritage.</p>
-                    </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Butter Tea">
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Noodles">
-                    </div>
-                    <div class="food-content">
-                        <h4>Tibetan Hand-Pulled Noodles</h4>
-                        <p>Tibetan hand-pulled noodles, or laghman, are a delicious and filling dish featuring thick, chewy noodles served in a savory broth with meat, vegetables, and spices. The noodles are handmade by skilled chefs who stretch and fold the dough multiple times to create the perfect texture. The dish is often served with yak meat, wild mountain vegetables, and fresh herbs, creating a hearty and flavorful meal that's especially comforting in Jiuzhaigou's cool mountain climate. It's a popular dish among both locals and visitors.</p>
-                    </div>
+                <div class="food-content">
+                    <h4>Tibetan Butter Tea</h4>
+                    <p>Traditional staple beverage made from yak butter, tea leaves, and salt, providing essential calories for high-altitude cold climate.</p>
+                </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tsampa">
+                </div>
+                <div class="food-content">
+                    <h4>Tsampa</h4>
+                    <p>Roasted barley flour, a staple food mixed with butter tea, yak butter, and sometimes cheese or sugar to create nourishing food.</p>
+                </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Noodles">
+                </div>
+                <div class="food-content">
+                    <h4>Tibetan Hand-Pulled Noodles</h4>
+                    <p>Thick, chewy handmade noodles served in savory broth with meat, vegetables, and spices, especially comforting in cool mountain climate.</p>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#destinations">Destinations</a>
-                <a href="index.html#culture">Culture</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-            <div class="footer-contact">
-                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/15387312735" target="_blank">+86 153 8731 2735</a></p>
-                <p><strong>💬 WeChat:</strong> Jeanedjaya_t</p>
-                <p><strong>📧 Email:</strong> jeanet.djayat@qq.com</p>
-                <p><strong>📍 Location:</strong> Shanghai, China</p>
-            </div>
-            <div class="footer-copyright">
-                <p>© 2024 Dynamic Tour. All rights reserved. | Exploring China Together</p>
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-content">
+        <div class="footer-top-section">
+            <h3>About Us</h3>
+            <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
+            <p class="hassle-text">Hassle no more!</p>
+        </div>
+        <div class="footer-middle-section">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: jeanet.djayat@qq.com</p>
+                <p>Whatsapp: +62 81318838877</p>
+                <p>Wechat: Zhou_1177</p>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom-section">
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="images/wechatbarcode.jpeg" class="social-link" title="WeChat QR Code" target="_blank">
+                        <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
+                    </a>
+                    <a href="https://instagram.com/jeanet.eunice" class="social-link" title="Instagram" target="_blank">
+                        <img src="images/instagram.png" alt="Instagram" width="20" height="20">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+    </div>
+</footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
+<!-- WhatsApp Button -->
+<a href="https://wa.me/6281318838877" class="whatsapp-btn" target="_blank">
+    <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
+</a>
 
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
 
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+
+<script>
+    // Mobile menu toggle
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+</script>
 </body>
 </html>

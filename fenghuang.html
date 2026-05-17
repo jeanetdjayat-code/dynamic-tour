@@ -317,26 +317,24 @@
 
         /* Food Section */
         .food-section {
-            padding: 3rem 2rem;
-            background: var(--light);
+            margin-top: 4rem;
         }
         .food-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            margin-top: 2rem;
         }
         .food-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .food-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         .food-img {
             height: 200px;
@@ -346,7 +344,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
         .food-card:hover .food-img img {
             transform: scale(1.05);
@@ -355,67 +353,67 @@
             padding: 1.5rem;
         }
         .food-content h4 {
-            font-size: 1.2rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
         .food-content p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* Footer */
-        .footer {
+        footer {
             background: var(--primary);
             color: white;
-            padding: 2rem 1rem;
-            text-align: center;
+            padding: 3rem 1rem 1rem;
         }
         .footer-content {
             max-width: 1200px;
-            margin: auto;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        .footer-contact {
+        .footer-top-section h3, .footer-section h3 {
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
-        .footer-contact p {
-            margin: 0.5rem 0;
+        .footer-top-section p, .footer-section p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
-        .footer-contact a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .footer-copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
+        .hassle-text {
+            color: var(--accent) !important;
+            font-weight: bold;
             margin-top: 1rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
         }
-
-        @media (max-width: 600px) {
-            .footer-links {
-                gap: 1rem;
-            }
-            .footer-links a {
-                font-size: 0.9rem;
-            }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .social-link:hover {
+            background: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
         }
     </style>
 </head>
@@ -470,8 +468,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Tuojiang River & Stilt Houses</h3>
-                    <p>The Tuojiang River is the heart and soul of Fenghuang Ancient Town. The river winds through the town, with traditional wooden stilt houses (diaojiaolou) built along its banks, their foundations resting on stilts in the water. These unique structures are a masterpiece of Miao and Tujia ethnic architecture, perfectly adapted to life along the river.</p>
-                    <p>Visitors can take a leisurely bamboo raft ride down the river, passing under ancient stone bridges and alongside the beautiful stilt houses. The river is especially magical at night when thousands of red lanterns illuminate the town, creating a stunning reflection on the water that makes Fenghuang one of the most beautiful nighttime destinations in China.</p>
+                    <p>The Tuojiang River is the heart of Fenghuang Ancient Town, with traditional wooden stilt houses built along its banks, foundations resting on stilts in the water.</p>
+                    <p>Visitors can take a leisurely bamboo raft ride down the river, passing under ancient stone bridges. The river is especially magical at night with thousands of red lanterns.</p>
                 </div>
             </div>
         </section>
@@ -484,8 +482,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Hongqiao (Rainbow Bridge)</h3>
-                    <p>Hongqiao, or Rainbow Bridge, is one of Fenghuang's most iconic landmarks. This beautiful wooden covered bridge spans the Tuojiang River, connecting the town's two sides. Built during the Ming Dynasty and restored in the Qing Dynasty, the bridge features traditional Chinese architecture with ornate wooden carvings and red lanterns.</p>
-                    <p>The bridge's upper level houses a tea house and shops selling local handicrafts, while the lower level offers stunning views of the river and surrounding stilt houses. Hongqiao is particularly famous for its picturesque views, especially at sunset and at night when the bridge is illuminated. It's also a popular spot for photographers and offers some of the best views of Fenghuang's skyline.</p>
+                    <p>Hongqiao is one of Fenghuang's most iconic landmarks, a beautiful wooden covered bridge spanning the Tuojiang River, built during the Ming Dynasty.</p>
+                    <p>The bridge's upper level houses a tea house and shops, while the lower level offers stunning views of the river and surrounding stilt houses.</p>
                 </div>
             </div>
         </section>
@@ -498,8 +496,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Wanshou Palace</h3>
-                    <p>Wanshou Palace, or the Palace of Longevity, is an important historical and cultural site in Fenghuang. Built during the Qing Dynasty, this Taoist temple complex is dedicated to the worship of the local patron saint, Yang Zaosi. The palace features beautiful traditional Chinese architecture with ornate carvings, colorful decorations, and peaceful courtyards.</p>
-                    <p>Visitors can explore the temple halls, admire the ancient wooden architecture, and learn about Fenghuang's religious and cultural history. The palace also houses a small museum showcasing local artifacts and historical exhibits. Wanshou Palace offers a peaceful escape from the busy streets of the ancient town, providing visitors with insights into Fenghuang's rich spiritual heritage.</p>
+                    <p>Wanshou Palace, or the Palace of Longevity, is an important historical site built during the Qing Dynasty, dedicated to the local patron saint Yang Zaosi.</p>
+                    <p>Visitors can explore the temple halls, admire the ancient wooden architecture, and learn about Fenghuang's religious and cultural history.</p>
                 </div>
             </div>
         </section>
@@ -512,8 +510,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Shen Congwen Former Residence</h3>
-                    <p>The Shen Congwen Former Residence is a memorial museum dedicated to one of China's most celebrated modern writers. Shen Congwen was born in Fenghuang in 1902 and his literary works, particularly "Border Town" (Biancheng), brought international fame to this ancient town. The traditional wooden courtyard house where Shen Congwen was born and spent his childhood has been carefully preserved as a museum.</p>
-                    <p>Visitors can explore the well-preserved Qing Dynasty-style residence, view personal belongings, manuscripts, photographs, and learn about the life and literary achievements of this beloved author. The museum also showcases the rich cultural heritage of Fenghuang that inspired Shen Congwen's writing. A visit to this historic home provides deep insights into the town's history and the man who made it famous worldwide through his beautiful descriptions of life in western Hunan.</p>
+                    <p>A memorial museum dedicated to China's celebrated modern writer Shen Congwen, whose works like "Border Town" brought fame to Fenghuang.</p>
+                    <p>The traditional wooden courtyard house has been preserved, showcasing personal belongings, manuscripts, and insights into the author's life.</p>
                 </div>
             </div>
         </section>
@@ -526,8 +524,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Wanming Pagoda</h3>
-                    <p>Wanming Pagoda, or Ten-Thousand Pagoda, is a beautiful multi-story pagoda located on the banks of the Tuojiang River in Fenghuang Ancient Town. This elegant seven-story pagoda is an iconic landmark of the town, its reflection beautifully mirrored in the river waters. The pagoda was originally built during the Qing Dynasty and has become one of the most photographed spots in Fenghuang.</p>
-                    <p>The pagoda features traditional Chinese architectural design with upturned eaves at each level and intricate decorative elements. Visitors can climb the pagoda's narrow stairs to reach the upper levels, where they are rewarded with panoramic views of the Tuojiang River, the ancient town's stilt houses, and the surrounding mountains. The pagoda is particularly beautiful at sunrise and sunset, and its illuminated form at night creates one of Fenghuang's most memorable and romantic scenes.</p>
+                    <p>Wanming Pagoda is a beautiful seven-story pagoda on the banks of the Tuojiang River, an iconic landmark originally built during the Qing Dynasty.</p>
+                    <p>Visitors can climb the pagoda's narrow stairs to enjoy panoramic views of the river, stilt houses, and surrounding mountains.</p>
                 </div>
             </div>
         </section>
@@ -535,87 +533,99 @@
 
     <!-- Local Food -->
     <section class="food-section">
-        <div class="food-container">
-            <h2 class="section-title">Local Food</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #666; line-height: 1.8;">Fenghuang offers a delicious blend of Hunan and Miao ethnic cuisine, featuring bold flavors, fresh local ingredients, and unique cooking methods. The local food scene showcases the town's rich culinary heritage with dishes that are both flavorful and visually appealing.</p>
-
-            <div class="food-grid">
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Xue Tao Cai">
-                    </div>
-                    <div class="food-content">
-                        <h4>Xue Tao Cai (Blood Cake)</h4>
-                        <p>A traditional Miao and Tujia ethnic delicacy, Xue Tao Cai is made from glutinous rice, pork, and pig blood, steamed and served with various seasonings. The dish has a unique texture and rich, savory flavor that's deeply rooted in local culinary traditions. It's often served during festivals and special occasions.</p>
-                    </div>
+        <div class="section-title">
+            <h2>Local Food</h2>
+            <p>Fenghuang offers a delicious blend of Hunan and Miao ethnic cuisine, featuring bold flavors, fresh local ingredients, and unique cooking methods.</p>
+        </div>
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Xue Tao Cai">
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Miao Sour Soup">
-                    </div>
-                    <div class="food-content">
-                        <h4>Miao Sour Soup</h4>
-                        <p>A signature dish of the Miao ethnic group, this sour soup is made with fermented rice or tomatoes, creating a tangy, appetizing broth. The soup typically includes fish, meat, or vegetables, with the sourness perfectly balanced by fresh herbs and chili peppers. It's a comforting and refreshing dish that represents the unique culinary identity of the Miao people.</p>
-                    </div>
+                <div class="food-content">
+                    <h4>Xue Tao Cai (Blood Cake)</h4>
+                    <p>A traditional Miao and Tujia ethnic delicacy made from glutinous rice, pork, and pig blood, steamed with various seasonings.</p>
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Smoked Pork">
-                    </div>
-                    <div class="food-content">
-                        <h4>Smoked Pork with Wild Vegetables</h4>
-                        <p>Fenghuang is famous for its traditional smoked pork, cured and smoked over wood fires for weeks. The tender, flavorful pork is often stir-fried with wild mountain vegetables like bracken fern or bamboo shoots, creating a perfect combination of smoky, savory, and slightly bitter flavors. This dish showcases the traditional preservation methods used in mountainous regions.</p>
-                    </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Miao Sour Soup">
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Rice Noodles">
-                    </div>
-                    <div class="food-content">
-                        <h4>Fenghuang Rice Noodles</h4>
-                        <p>A popular breakfast and street food in Fenghuang, these rice noodles are served in a flavorful broth with various toppings including braised pork, pickled vegetables, peanuts, and fresh herbs. The noodles are freshly made and have a chewy texture, while the broth is rich and aromatic. It's a simple yet delicious dish that's perfect for starting your day exploring the ancient town.</p>
-                    </div>
+                <div class="food-content">
+                    <h4>Miao Sour Soup</h4>
+                    <p>A signature dish made with fermented rice or tomatoes, creating a tangy broth with fish, meat, or vegetables.</p>
+                </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Smoked Pork">
+                </div>
+                <div class="food-content">
+                    <h4>Smoked Pork with Wild Vegetables</h4>
+                    <p>Traditional smoked pork cured over wood fires, stir-fried with wild mountain vegetables like bracken fern or bamboo shoots.</p>
+                </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Rice Noodles">
+                </div>
+                <div class="food-content">
+                    <h4>Fenghuang Rice Noodles</h4>
+                    <p>Popular breakfast and street food served in a flavorful broth with braised pork, pickled vegetables, peanuts, and fresh herbs.</p>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#destinations">Destinations</a>
-                <a href="index.html#culture">Culture</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-            <div class="footer-contact">
-                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/15387312735" target="_blank">+86 153 8731 2735</a></p>
-                <p><strong>💬 WeChat:</strong> Jeanedjaya_t</p>
-                <p><strong>📧 Email:</strong> jeanet.djayat@qq.com</p>
-                <p><strong>📍 Location:</strong> Shanghai, China</p>
-            </div>
-            <div class="footer-copyright">
-                <p>© 2024 Dynamic Tour. All rights reserved. | Exploring China Together</p>
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-content">
+        <div class="footer-top-section">
+            <h3>About Us</h3>
+            <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
+            <p class="hassle-text">Hassle no more!</p>
+        </div>
+        <div class="footer-middle-section">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: jeanet.djayat@qq.com</p>
+                <p>Whatsapp: +62 81318838877</p>
+                <p>Wechat: Zhou_1177</p>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom-section">
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="images/wechatbarcode.jpeg" class="social-link" title="WeChat QR Code" target="_blank">
+                        <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
+                    </a>
+                    <a href="https://instagram.com/jeanet.eunice" class="social-link" title="Instagram" target="_blank">
+                        <img src="images/instagram.png" alt="Instagram" width="20" height="20">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+    </div>
+</footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
+<!-- WhatsApp Button -->
+<a href="https://wa.me/6281318838877" class="whatsapp-btn" target="_blank">
+    <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
+</a>
 
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
 
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+
+<script>
+    // Mobile menu toggle
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+</script>
 </body>
 </html>

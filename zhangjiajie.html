@@ -317,26 +317,24 @@
 
         /* Food Section */
         .food-section {
-            padding: 3rem 2rem;
-            background: var(--light);
+            margin-top: 4rem;
         }
         .food-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            margin-top: 2rem;
         }
         .food-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .food-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         .food-img {
             height: 200px;
@@ -346,7 +344,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
         .food-card:hover .food-img img {
             transform: scale(1.05);
@@ -355,67 +353,67 @@
             padding: 1.5rem;
         }
         .food-content h4 {
-            font-size: 1.2rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
         .food-content p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* Footer */
-        .footer {
+        footer {
             background: var(--primary);
             color: white;
-            padding: 2rem 1rem;
-            text-align: center;
+            padding: 3rem 1rem 1rem;
         }
         .footer-content {
             max-width: 1200px;
-            margin: auto;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        .footer-contact {
+        .footer-top-section h3, .footer-section h3 {
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
-        .footer-contact p {
-            margin: 0.5rem 0;
+        .footer-top-section p, .footer-section p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
-        .footer-contact a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .footer-copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
+        .hassle-text {
+            color: var(--accent) !important;
+            font-weight: bold;
             margin-top: 1rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
         }
-
-        @media (max-width: 600px) {
-            .footer-links {
-                gap: 1rem;
-            }
-            .footer-links a {
-                font-size: 0.9rem;
-            }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .social-link:hover {
+            background: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
         }
     </style>
 </head>
@@ -470,8 +468,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Zhangjiajie National Forest Park</h3>
-                    <p>Zhangjiajie National Forest Park is China's first national forest park and the crown jewel of Zhangjiajie's natural wonders. This UNESCO World Heritage Site covers over 4,800 hectares and is famous for its thousands of towering quartz sandstone pillars, some reaching heights of over 300 meters. The park served as the inspiration for the floating "Hallelujah Mountains" in James Cameron's film "Avatar," bringing worldwide fame to this spectacular natural landscape.</p>
-                    <p>The park features multiple scenic areas including Yuanjiajie, Tianzi Mountain, and Golden Whip Stream, each offering unique perspectives of the magical pillar forest. Visitors can explore via well-maintained hiking trails, scenic boardwalks, cable cars, and the famous Bailong Elevator - the world's tallest outdoor elevator. The park's surreal landscape, with pillars piercing through clouds and mist, creates an otherworldly atmosphere that has made it one of China's most beloved natural destinations.</p>
+                    <p>China's first national forest park and UNESCO World Heritage Site, famous for thousands of towering quartz sandstone pillars that inspired the "Hallelujah Mountains" in the film Avatar.</p>
+                    <p>The park features multiple scenic areas including Yuanjiajie, Tianzi Mountain, and Golden Whip Stream, accessible via hiking trails, cable cars, and the famous Bailong Elevator.</p>
                 </div>
             </div>
         </section>
@@ -484,8 +482,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Tianmen Mountain National Forest Park</h3>
-                    <p>Tianmen Mountain National Forest Park is a spectacular natural wonder centered around the majestic 1,518-meter Tianmen Mountain. The mountain is famous for its massive natural archway known as Tianmen Cave, or "Heaven's Gate," which stands an impressive 131.5 meters high and was formed through centuries of natural erosion. The park is accessible via the world's longest passenger cable car, a 7.5-kilometer journey that offers breathtaking aerial views during the ascent.</p>
-                    <p>Visitors can climb the legendary 999 "Heavenly Ladder" steps up to the cave, or take the modern escalator system for a more comfortable ascent. The mountain features thrilling cliffside glass walkways, beautiful temples, the famous 99-turn "Avenue to Heaven" winding road, and panoramic views of the surrounding region. Tianmen Mountain offers a different but equally awe-inspiring experience compared to the quartz sandstone pillars, showcasing Zhangjiajie's diverse natural beauty.</p>
+                    <p>A spectacular natural wonder centered around the 1,518-meter Tianmen Mountain, famous for its massive natural archway known as Tianmen Cave, or "Heaven's Gate."</p>
+                    <p>Accessible via the world's longest passenger cable car, the mountain features thrilling cliffside glass walkways, the 999 "Heavenly Ladder" steps, and the famous 99-turn winding road.</p>
                 </div>
             </div>
         </section>
@@ -498,8 +496,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Zhangjiajie Grand Canyon</h3>
-                    <p>Zhangjiajie Grand Canyon is a stunning natural gorge featuring dramatic cliffs, crystal-clear streams, and lush vegetation. The canyon offers a different experience from the famous quartz sandstone pillars, showcasing Zhangjiajie's diverse geological features. The highlight of the canyon is the world-famous Zhangjiajie Glass Bridge, which spans 430 meters across the canyon at a height of 300 meters, holding the Guinness World Record as the longest and highest glass-bottomed bridge in the world.</p>
-                    <p>Visitors can explore the canyon via scenic hiking trails that wind past waterfalls, natural pools, and beautiful rock formations. The canyon also offers exciting activities including bungee jumping from the glass bridge, zip-lining across the canyon, and boat rides on the peaceful lower section. The combination of natural beauty and thrilling man-made attractions makes Zhangjiajie Grand Canyon a must-visit destination for adventure seekers and nature lovers alike.</p>
+                    <p>A stunning natural gorge featuring dramatic cliffs, crystal-clear streams, and lush vegetation, offering a different experience from the famous quartz sandstone pillars.</p>
+                    <p>The highlight is the world-famous Zhangjiajie Glass Bridge, spanning 430 meters across the canyon at 300 meters high, holding the Guinness World Record for the longest glass-bottomed bridge.</p>
                 </div>
             </div>
         </section>
@@ -512,8 +510,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Yellow Dragon Cave</h3>
-                    <p>Yellow Dragon Cave is one of China's most spectacular and largest caves, often called the "Underground Magical Palace." This massive limestone cave system stretches for over 15 kilometers and features four levels, including underground rivers, lakes, and thousands of stunning stalactites and stalagmites. The cave gets its name from a legend about a yellow dragon that once inhabited the cave, adding a touch of mystery to this natural wonder.</p>
-                    <p>Visitors can explore the cave via well-lit walkways and boardwalks, passing through magnificent caverns adorned with intricate rock formations that have been forming for millions of years. The cave features several iconic landmarks including the "Dragon King's Palace," "Waterfall Hall," and the famous "Needle of the Gods" - a slender stalagmite that stands nearly 20 meters tall. A boat ride on the underground river offers a unique perspective of this subterranean wonderland, making Yellow Dragon Cave a fascinating complement to Zhangjiajie's outdoor scenery.</p>
+                    <p>One of China's most spectacular caves, often called the "Underground Magical Palace." This massive limestone cave system stretches over 15 kilometers with four levels of underground rivers and lakes.</p>
+                    <p>Visitors can explore via well-lit walkways, passing magnificent caverns adorned with intricate stalactites and stalagmites that have been forming for millions of years.</p>
                 </div>
             </div>
         </section>
@@ -526,8 +524,8 @@
                 </div>
                 <div class="attraction-text">
                     <h3>Baofeng Lake</h3>
-                    <p>Baofeng Lake is a beautiful alpine lake nestled among towering sandstone peaks, offering a serene and picturesque contrast to Zhangjiajie's dramatic mountain landscapes. This man-made lake, created by damming a valley, features crystal-clear emerald waters that perfectly reflect the surrounding cliffs and forested peaks. The lake is surrounded by lush vegetation and offers a peaceful escape from the busier areas of Zhangjiajie.</p>
-                    <p>The most popular way to experience Baofeng Lake is by taking a traditional Chinese-style boat tour, which glides across the tranquil waters while guides share local legends and point out interesting rock formations. Visitors can also hike around the lake's perimeter, enjoying scenic views and spotting wildlife. The lake is especially famous for the "Baofeng Waterfall" that cascades down the cliffs into the lake, and the charming "Yingwo Village" perched on the mountainside. Baofeng Lake offers a peaceful, romantic experience that captures the essence of Zhangjiajie's natural beauty.</p>
+                    <p>A beautiful alpine lake nestled among towering sandstone peaks, offering a serene and picturesque contrast to Zhangjiajie's dramatic mountain landscapes.</p>
+                    <p>The most popular way to experience the lake is by taking a traditional Chinese-style boat tour, gliding across tranquil waters while guides share local legends.</p>
                 </div>
             </div>
         </section>
@@ -535,87 +533,99 @@
 
     <!-- Local Food -->
     <section class="food-section">
-        <div class="food-container">
-            <h2 class="section-title">Local Food</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #666; line-height: 1.8;">Zhangjiajie offers a delicious blend of Hunan and local mountain cuisine, featuring fresh local ingredients, bold flavors, and unique cooking methods. The region's mountainous terrain provides an abundance of fresh wild vegetables, mushrooms, and bamboo that are featured in many local dishes.</p>
-
-            <div class="food-grid">
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie Smoked Pork">
-                    </div>
-                    <div class="food-content">
-                        <h4>Zhangjiajie Smoked Pork</h4>
-                        <p>A local specialty, Zhangjiajie smoked pork is made from free-range mountain pigs, cured with salt and spices, then smoked over pine branches and tea leaves for weeks. The result is tender, flavorful meat with a distinctive smoky aroma. It's often stir-fried with wild mountain vegetables like bracken fern or bamboo shoots, creating a perfect combination of smoky, savory flavors that represent the mountain region's culinary heritage.</p>
-                    </div>
+        <div class="section-title">
+            <h2>Local Food</h2>
+            <p>Zhangjiajie offers a delicious blend of Hunan and local mountain cuisine, featuring fresh local ingredients, bold flavors, and unique cooking methods.</p>
+        </div>
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie Smoked Pork">
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Wild Vegetable Soup">
-                    </div>
-                    <div class="food-content">
-                        <h4>Wild Mountain Vegetables</h4>
-                        <p>Zhangjiajie's mountainous region is rich in wild edible plants and mushrooms. Local cuisine features various wild mountain vegetables including bracken fern (juecai), wild bamboo shoots, mushroom varieties, and edible fungi. These fresh, organic ingredients are often stir-fried with garlic and chili, or served in hotpot, offering a unique taste of the region's natural bounty. The crisp texture and earthy flavors make these dishes a favorite among visitors seeking authentic mountain cuisine.</p>
-                    </div>
+                <div class="food-content">
+                    <h4>Zhangjiajie Smoked Pork</h4>
+                    <p>A local specialty made from free-range mountain pigs, cured with salt and spices, then smoked over pine branches for weeks.</p>
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Hehua Fish">
-                    </div>
-                    <div class="food-content">
-                        <h4>Hehua Fish (Lotus Flower Fish)</h4>
-                        <p>Hehua Fish is a Zhangjiajie specialty named after its delicate, flower-like presentation. The dish features whole fish, typically carp, scored and fried until golden and crispy, then served with a sweet and sour sauce. The preparation creates a beautiful "lotus flower" shape when the fish fans out during frying. The crispy exterior and tender flesh, combined with the tangy sauce, create a delicious balance of textures and flavors that's been a local favorite for generations.</p>
-                    </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Wild Vegetable Soup">
                 </div>
-                <div class="food-card">
-                    <div class="food-img">
-                        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie Noodles">
-                    </div>
-                    <div class="food-content">
-                        <h4>Zhangjiajie Rice Noodles</h4>
-                        <p>Zhangjiajie is famous for its delicious rice noodles, a popular breakfast and street food option. The fresh, chewy rice noodles are served in a rich, flavorful broth with various toppings including braised pork, pickled vegetables, peanuts, and fresh herbs. Local variations include spicy versions with chili oil, as well as soup-based and stir-fried options. Many visitors consider Zhangjiajie's rice noodles among the best in Hunan Province, with a texture and flavor that's uniquely satisfying.</p>
-                    </div>
+                <div class="food-content">
+                    <h4>Wild Mountain Vegetables</h4>
+                    <p>Rich in wild edible plants like bracken fern, wild bamboo shoots, and mushrooms, often stir-fried with garlic and chili.</p>
+                </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Hehua Fish">
+                </div>
+                <div class="food-content">
+                    <h4>Hehua Fish (Lotus Flower Fish)</h4>
+                    <p>Named for its flower-like presentation, featuring whole fish scored and fried until golden, served with sweet and sour sauce.</p>
+                </div>
+            </div>
+            <div class="food-card">
+                <div class="food-img">
+                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie Noodles">
+                </div>
+                <div class="food-content">
+                    <h4>Zhangjiajie Rice Noodles</h4>
+                    <p>Famous fresh rice noodles served in rich broth with toppings like braised pork, pickled vegetables, peanuts, and herbs.</p>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#destinations">Destinations</a>
-                <a href="index.html#culture">Culture</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-            <div class="footer-contact">
-                <p><strong>📞 WhatsApp:</strong> <a href="https://wa.me/15387312735" target="_blank">+86 153 8731 2735</a></p>
-                <p><strong>💬 WeChat:</strong> Jeanedjaya_t</p>
-                <p><strong>📧 Email:</strong> jeanet.djayat@qq.com</p>
-                <p><strong>📍 Location:</strong> Shanghai, China</p>
-            </div>
-            <div class="footer-copyright">
-                <p>© 2024 Dynamic Tour. All rights reserved. | Exploring China Together</p>
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-content">
+        <div class="footer-top-section">
+            <h3>About Us</h3>
+            <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
+            <p class="hassle-text">Hassle no more!</p>
+        </div>
+        <div class="footer-middle-section">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: jeanet.djayat@qq.com</p>
+                <p>Whatsapp: +62 81318838877</p>
+                <p>Wechat: Zhou_1177</p>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom-section">
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="images/wechatbarcode.jpeg" class="social-link" title="WeChat QR Code" target="_blank">
+                        <img src="images/wechat.jpeg.png" alt="WeChat" width="20" height="20">
+                    </a>
+                    <a href="https://instagram.com/jeanet.eunice" class="social-link" title="Instagram" target="_blank">
+                        <img src="images/instagram.png" alt="Instagram" width="20" height="20">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+    </div>
+</footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
+<!-- WhatsApp Button -->
+<a href="https://wa.me/6281318838877" class="whatsapp-btn" target="_blank">
+    <img src="images/whatsapp.jpeg.png" alt="WhatsApp" width="40" height="40">
+</a>
 
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
 
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+
+<script>
+    // Mobile menu toggle
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+</script>
 </body>
 </html>
