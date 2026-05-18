@@ -45,18 +45,20 @@
             z-index: 999;
         }
         .nav-container {
-            max-width: 1200px;
-            margin: auto;
+            max-width: 1400px;
+            margin: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             padding: 0.8rem 1.2rem;
+            gap: 2rem;
         }
         .logo-container {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             text-decoration: none;
+            flex-shrink: 0;
         }
         .logo-img {
             height: 100px;
@@ -72,6 +74,7 @@
         .nav-links {
             display: flex;
             gap: 1.8rem;
+            margin-left: auto;
         }
         .nav-links a {
             color: var(--primary);
@@ -373,21 +376,17 @@
             color: var(--accent);
             margin-top: 0.5rem;
         }
-        .footer-middle-section {
+        .footer-middle-bottom-row {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
+            max-width: 800px;
             margin: 0 auto;
-            max-width: 600px;
-        }
-        .footer-bottom-section {
-            display: flex;
-            justify-content: center;
-            margin: 0 auto;
-            max-width: 600px;
+            gap: 2rem;
         }
         .footer-section {
             min-width: 250px;
             text-align: center;
+            flex: 1;
         }
         .footer-section h3 {
             font-size: 1.2rem;
@@ -433,11 +432,9 @@
 
         /* Mobile optimization for footer */
         @media (max-width: 768px) {
-            .footer-middle-section,
-            .footer-bottom-section {
+            .footer-middle-bottom-row {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
+                gap: 1.5rem;
             }
             .footer-section {
                 width: 100%;
@@ -512,7 +509,7 @@
                 <a href="index.html#culture">Culture</a>
                 <a href="index.html#contact">Contact</a>
             </div>
-            <button class="menu-btn" onclick="toggleMenu()">â˜°</button>
+            <button class="menu-btn" onclick="toggleMenu()">â˜?/button>
         </div>
     </nav>
 
@@ -664,15 +661,13 @@
                 <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
                 <p class="hassle-text">Hassle no more!</p>
             </div>
-            <div class="footer-middle-section">
+            <div class="footer-middle-bottom-row">
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <p>Email: jeanet.djayat@qq.com</p>
                     <p>Whatsapp: +62 81318838877</p>
                     <p>Wechat: Zhou_1177</p>
                 </div>
-            </div>
-            <div class="footer-bottom-section">
                 <div class="footer-section">
                     <h3>Follow Us</h3>
                     <div class="social-links">
