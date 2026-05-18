@@ -171,45 +171,48 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        /* City Introduction */
-        .city-intro {
-            background: white;
-            padding: 3rem 2rem;
-            border-bottom: 1px solid var(--gray);
-        }
-        .intro-content {
-            max-width: 1000px;
+        /* Main Content */
+        .main-content {
+            padding: 2rem 1rem;
+            max-width: 1200px;
             margin: auto;
         }
-        .intro-content h2 {
+        .section-title {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .section-title h2 {
             font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--primary);
-            margin-bottom: 1.5rem;
-            position: relative;
+            margin-bottom: 1rem;
             padding-bottom: 0.8rem;
+            display: inline-block;
+            position: relative;
         }
-        .intro-content h2::after {
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
             height: 3px;
             background: var(--accent);
         }
-        .intro-content p {
-            font-size: 1.1rem;
+        .section-title p {
             color: #666;
             line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
         }
-
-        /* Visit Time */
+        
         .visit-time {
             background: var(--light);
             padding: 2rem;
             border-left: 4px solid var(--accent);
-            margin: 2rem auto;
-            max-width: 1000px;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
         }
         .visit-time h3 {
             color: var(--primary);
@@ -219,38 +222,16 @@
         .visit-time p {
             color: #555;
             line-height: 1.8;
+            margin: 0.5rem 0;
         }
 
-        /* Attractions Section */
-        .attractions-section {
-            padding: 3rem 2rem;
-            background: white;
-        }
-        .section-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-        }
-
+        /* Attractions */
         .attraction {
             margin-bottom: 3rem;
         }
         .attraction-content {
             display: flex;
             gap: 2rem;
-            flex-wrap: wrap;
             align-items: center;
         }
         .attraction-img {
@@ -307,11 +288,20 @@
                 padding: 1.2rem;
                 margin: 1.5rem 0;
             }
-            .visit-time-content h3 {
+            .visit-time h3 {
                 font-size: 1.3rem;
             }
-            .visit-time-content p {
+            .visit-time p {
                 font-size: 0.9rem;
+            }
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+            .section-title {
+                margin-bottom: 2rem;
+            }
+            .section-title p {
+                font-size: 0.95rem;
             }
         }
 
@@ -372,10 +362,12 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             margin-bottom: 2rem;
+        }
+        .footer-top-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
         }
         .footer-top-section h3, .footer-section h3 {
             margin-bottom: 1rem;
@@ -385,6 +377,17 @@
             color: #ccc;
             line-height: 1.6;
             margin-bottom: 0.5rem;
+        }
+        .footer-middle-bottom-row {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
         }
         .hassle-text {
             color: var(--accent) !important;
@@ -415,6 +418,19 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #ccc;
         }
+        
+        @media (max-width: 768px) {
+            .footer-middle-bottom-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -441,24 +457,19 @@
         <p>Discover the Real Avatar Mountains - China's Most Spectacular Natural Wonder</p>
     </section>
 
-    <!-- City Introduction -->
-    <section class="city-intro">
-        <div class="intro-content">
+    <main class="main-content">
+        <!-- Introduction -->
+        <section class="section-title">
             <h2>Discover Zhangjiajie</h2>
             <p>Zhangjiajie is one of China's most breathtaking natural destinations, famous for its towering sandstone pillars, dramatic mountain landscapes, and pristine wilderness. Located in Hunan Province, this UNESCO World Heritage Site served as inspiration for the floating mountains in James Cameron's film "Avatar." The region features thousands of towering quartz sandstone pillars, some reaching heights of over 300 meters, creating a surreal, otherworldly landscape that attracts millions of visitors each year. Zhangjiajie offers stunning hiking trails, glass bridges, cable car rides, and the chance to experience the incredible biodiversity of one of China's most beautiful natural regions.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Visit Time -->
-    <section class="visit-time">
-        <h3>Suggested Visit Time</h3>
-        <p><strong>Recommended Duration:</strong> 3-4 days</p>
-        <p><strong>Best Time to Visit:</strong> March to May (spring) and September to November (autumn) when the weather is mild and the scenery is at its best. Summer can be hot and humid, while winter offers beautiful snow-covered landscapes but can be quite cold. The park is especially beautiful in the early morning when clouds and mist create a magical atmosphere.</p>
-    </section>
-
-    <!-- Attractions -->
-    <section class="attractions-section">
-        <h2 class="section-title">Main Tourist Attractions</h2>
+        <!-- Visit Time Section -->
+        <section class="visit-time">
+            <h3>Suggested Visit Time</h3>
+            <p><strong>Recommended Duration:</strong> 3-4 days</p>
+            <p><strong>Best Time to Visit:</strong> March to May (spring) and September to November (autumn) when the weather is mild and the scenery is at its best. Summer can be hot and humid, while winter offers beautiful snow-covered landscapes but can be quite cold. The park is especially beautiful in the early morning when clouds and mist create a magical atmosphere.</p>
+        </section>
 
         <!-- Zhangjiajie National Forest Park -->
         <section class="attraction">
@@ -529,54 +540,53 @@
                 </div>
             </div>
         </section>
-    </section>
 
-    <!-- Local Food -->
-    <section class="food-section">
-        <div class="section-title">
-            <h2>Local Food</h2>
-            <p>Zhangjiajie offers a delicious blend of Hunan and local mountain cuisine, featuring fresh local ingredients, bold flavors, and unique cooking methods.</p>
-        </div>
-        <div class="food-grid">
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie Smoked Pork">
+        <!-- Local Food -->
+        <section class="food-section">
+            <div class="section-title">
+                <h2>Local Food</h2>
+                <p>Zhangjiajie offers a delicious blend of Hunan and local mountain cuisine, featuring fresh local ingredients, bold flavors, and unique cooking methods.</p>
+            </div>
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/zhangjiajie smoked pork.jpg" alt="Zhangjiajie Smoked Pork">
+                    </div>
+                    <div class="food-content">
+                        <h4>Zhangjiajie Smoked Pork</h4>
+                        <p>A local specialty made from free-range mountain pigs, cured with salt and spices, then smoked over pine branches for weeks.</p>
+                    </div>
                 </div>
-                <div class="food-content">
-                    <h4>Zhangjiajie Smoked Pork</h4>
-                    <p>A local specialty made from free-range mountain pigs, cured with salt and spices, then smoked over pine branches for weeks.</p>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/wild mountain vegetables.jpg" alt="Wild Vegetable Soup">
+                    </div>
+                    <div class="food-content">
+                        <h4>Wild Mountain Vegetables</h4>
+                        <p>Rich in wild edible plants like bracken fern, wild bamboo shoots, and mushrooms, often stir-fried with garlic and chili.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/Hehua fish.jpg" alt="Hehua Fish">
+                    </div>
+                    <div class="food-content">
+                        <h4>Hehua Fish (Lotus Flower Fish)</h4>
+                        <p>Named for its flower-like presentation, featuring whole fish scored and fried until golden, served with sweet and sour sauce.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/zhangjiajie rice noodles.jpg" alt="Zhangjiajie Noodles">
+                    </div>
+                    <div class="food-content">
+                        <h4>Zhangjiajie Rice Noodles</h4>
+                        <p>Famous fresh rice noodles served in rich broth with toppings like braised pork, pickled vegetables, peanuts, and herbs.</p>
+                    </div>
                 </div>
             </div>
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Wild Vegetable Soup">
-                </div>
-                <div class="food-content">
-                    <h4>Wild Mountain Vegetables</h4>
-                    <p>Rich in wild edible plants like bracken fern, wild bamboo shoots, and mushrooms, often stir-fried with garlic and chili.</p>
-                </div>
-            </div>
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Hehua Fish">
-                </div>
-                <div class="food-content">
-                    <h4>Hehua Fish (Lotus Flower Fish)</h4>
-                    <p>Named for its flower-like presentation, featuring whole fish scored and fried until golden, served with sweet and sour sauce.</p>
-                </div>
-            </div>
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Zhangjiajie Noodles">
-                </div>
-                <div class="food-content">
-                    <h4>Zhangjiajie Rice Noodles</h4>
-                    <p>Famous fresh rice noodles served in rich broth with toppings like braised pork, pickled vegetables, peanuts, and herbs.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
 <!-- Footer -->
 <footer id="contact">
@@ -586,15 +596,13 @@
             <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
             <p class="hassle-text">Hassle no more!</p>
         </div>
-        <div class="footer-middle-section">
+        <div class="footer-middle-bottom-row">
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Email: jeanet.djayat@qq.com</p>
                 <p>Whatsapp: +62 81318838877</p>
                 <p>Wechat: Zhou_1177</p>
             </div>
-        </div>
-        <div class="footer-bottom-section">
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-links">

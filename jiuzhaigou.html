@@ -171,45 +171,48 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        /* City Introduction */
-        .city-intro {
-            background: white;
-            padding: 3rem 2rem;
-            border-bottom: 1px solid var(--gray);
-        }
-        .intro-content {
-            max-width: 1000px;
+        /* Main Content */
+        .main-content {
+            padding: 2rem 1rem;
+            max-width: 1200px;
             margin: auto;
         }
-        .intro-content h2 {
+        .section-title {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .section-title h2 {
             font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--primary);
-            margin-bottom: 1.5rem;
-            position: relative;
+            margin-bottom: 1rem;
             padding-bottom: 0.8rem;
+            display: inline-block;
+            position: relative;
         }
-        .intro-content h2::after {
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
             height: 3px;
             background: var(--accent);
         }
-        .intro-content p {
-            font-size: 1.1rem;
+        .section-title p {
             color: #666;
             line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
         }
-
-        /* Visit Time */
+        
         .visit-time {
             background: var(--light);
             padding: 2rem;
             border-left: 4px solid var(--accent);
-            margin: 2rem auto;
-            max-width: 1000px;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
         }
         .visit-time h3 {
             color: var(--primary);
@@ -219,38 +222,16 @@
         .visit-time p {
             color: #555;
             line-height: 1.8;
+            margin: 0.5rem 0;
         }
 
-        /* Attractions Section */
-        .attractions-section {
-            padding: 3rem 2rem;
-            background: white;
-        }
-        .section-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-        }
-
+        /* Attractions */
         .attraction {
             margin-bottom: 3rem;
         }
         .attraction-content {
             display: flex;
             gap: 2rem;
-            flex-wrap: wrap;
             align-items: center;
         }
         .attraction-img {
@@ -307,11 +288,20 @@
                 padding: 1.2rem;
                 margin: 1.5rem 0;
             }
-            .visit-time-content h3 {
+            .visit-time h3 {
                 font-size: 1.3rem;
             }
-            .visit-time-content p {
+            .visit-time p {
                 font-size: 0.9rem;
+            }
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+            .section-title {
+                margin-bottom: 2rem;
+            }
+            .section-title p {
+                font-size: 0.95rem;
             }
         }
 
@@ -372,10 +362,12 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             margin-bottom: 2rem;
+        }
+        .footer-top-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
         }
         .footer-top-section h3, .footer-section h3 {
             margin-bottom: 1rem;
@@ -385,6 +377,17 @@
             color: #ccc;
             line-height: 1.6;
             margin-bottom: 0.5rem;
+        }
+        .footer-middle-bottom-row {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
         }
         .hassle-text {
             color: var(--accent) !important;
@@ -415,6 +418,19 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #ccc;
         }
+        
+        @media (max-width: 768px) {
+            .footer-middle-bottom-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -441,24 +457,19 @@
         <p>Discover China's Fairyland of Turquoise Lakes and Waterfalls</p>
     </section>
 
-    <!-- City Introduction -->
-    <section class="city-intro">
-        <div class="intro-content">
+    <main class="main-content">
+        <!-- Introduction -->
+        <section class="section-title">
             <h2>Discover Jiuzhaigou</h2>
             <p>Jiuzhaigou National Park, located in northern Sichuan Province, is one of China's most spectacular and beloved natural destinations. This UNESCO World Heritage Site is renowned for its stunning turquoise and emerald-colored lakes, cascading waterfalls, snow-capped mountain peaks, and ancient forests. The park's name means "Valley of Nine Villages," referring to the nine Tibetan villages scattered throughout the valley. Jiuzhaigou's unique karst landscape, combined with the mineral-rich waters that create the park's famous multi-colored lakes, makes it one of the most beautiful places on Earth. The park offers breathtaking hiking trails, scenic bus routes, and the chance to experience Tibetan culture and the region's incredible biodiversity.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Visit Time -->
-    <section class="visit-time">
-        <h3>Suggested Visit Time</h3>
-        <p><strong>Recommended Duration:</strong> 2-3 days</p>
-        <p><strong>Best Time to Visit:</strong> September to October (autumn) when the leaves turn golden and red, creating a spectacular contrast with the turquoise lakes. Spring (April to May) offers beautiful wildflowers, while summer is lush and green. Winter (December to February) offers a magical snow-covered landscape with frozen waterfalls and fewer crowds.</p>
-    </section>
-
-    <!-- Attractions -->
-    <section class="attractions-section">
-        <h2 class="section-title">Main Tourist Attractions</h2>
+        <!-- Visit Time Section -->
+        <section class="visit-time">
+            <h3>Suggested Visit Time</h3>
+            <p><strong>Recommended Duration:</strong> 2-3 days</p>
+            <p><strong>Best Time to Visit:</strong> September to October (autumn) when the leaves turn golden and red, creating a spectacular contrast with the turquoise lakes. Spring (April to May) offers beautiful wildflowers, while summer is lush and green. Winter (December to February) offers a magical snow-covered landscape with frozen waterfalls and fewer crowds.</p>
+        </section>
 
         <!-- Five Flower Lake -->
         <section class="attraction">
@@ -529,54 +540,53 @@
                 </div>
             </div>
         </section>
-    </section>
 
-    <!-- Local Food -->
-    <section class="food-section">
-        <div class="section-title">
-            <h2>Local Food</h2>
-            <p>Jiuzhaigou offers a unique blend of Tibetan and Sichuan cuisine, featuring hearty mountain dishes, dairy products, and bold flavors.</p>
-        </div>
-        <div class="food-grid">
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Yak Hotpot">
+        <!-- Local Food -->
+        <section class="food-section">
+            <div class="section-title">
+                <h2>Local Food</h2>
+                <p>Jiuzhaigou offers a unique blend of Tibetan and Sichuan cuisine, featuring hearty mountain dishes, dairy products, and bold flavors.</p>
+            </div>
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/tibetian yak hotpot.png" alt="Tibetan Yak Hotpot">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tibetan Yak Hotpot</h4>
+                        <p>A must-try specialty featuring tender yak meat cooked in rich broth with various mushrooms, wild vegetables, and Tibetan herbs.</p>
+                    </div>
                 </div>
-                <div class="food-content">
-                    <h4>Tibetan Yak Hotpot</h4>
-                    <p>A must-try specialty featuring tender yak meat cooked in rich broth with various mushrooms, wild vegetables, and Tibetan herbs.</p>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/tibetan butter tea.jpg" alt="Tibetan Butter Tea">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tibetan Butter Tea</h4>
+                        <p>Traditional staple beverage made from yak butter, tea leaves, and salt, providing essential calories for high-altitude cold climate.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/tsampa.jpg" alt="Tsampa">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tsampa</h4>
+                        <p>Roasted barley flour, a staple food mixed with butter tea, yak butter, and sometimes cheese or sugar to create nourishing food.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <div class="food-img">
+                        <img src="images/tibetian hand pulled noodles.jpg" alt="Tibetan Noodles">
+                    </div>
+                    <div class="food-content">
+                        <h4>Tibetan Hand-Pulled Noodles</h4>
+                        <p>Thick, chewy handmade noodles served in savory broth with meat, vegetables, and spices, especially comforting in cool mountain climate.</p>
+                    </div>
                 </div>
             </div>
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Butter Tea">
-                </div>
-                <div class="food-content">
-                    <h4>Tibetan Butter Tea</h4>
-                    <p>Traditional staple beverage made from yak butter, tea leaves, and salt, providing essential calories for high-altitude cold climate.</p>
-                </div>
-            </div>
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tsampa">
-                </div>
-                <div class="food-content">
-                    <h4>Tsampa</h4>
-                    <p>Roasted barley flour, a staple food mixed with butter tea, yak butter, and sometimes cheese or sugar to create nourishing food.</p>
-                </div>
-            </div>
-            <div class="food-card">
-                <div class="food-img">
-                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80" alt="Tibetan Noodles">
-                </div>
-                <div class="food-content">
-                    <h4>Tibetan Hand-Pulled Noodles</h4>
-                    <p>Thick, chewy handmade noodles served in savory broth with meat, vegetables, and spices, especially comforting in cool mountain climate.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
 <!-- Footer -->
 <footer id="contact">
@@ -586,15 +596,13 @@
             <p>Dynamic Tour is dedicated to providing authentic travel experiences in China, with expert guides and carefully crafted itineraries. Our guides are fluent in Indonesian, English and Chinese, so no language barriers!</p>
             <p class="hassle-text">Hassle no more!</p>
         </div>
-        <div class="footer-middle-section">
+        <div class="footer-middle-bottom-row">
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Email: jeanet.djayat@qq.com</p>
                 <p>Whatsapp: +62 81318838877</p>
                 <p>Wechat: Zhou_1177</p>
             </div>
-        </div>
-        <div class="footer-bottom-section">
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-links">
