@@ -154,7 +154,7 @@
         .banner {
             height: clamp(250px, 50vw, 500px);
             background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
-                        url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zhangjiajie%20Avatar%20Mountains%20towering%20quartz%20sandstone%20pillars&image_size=landscape_16_9') center/cover no-repeat;
+                        url('images/zhangjiajie.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -425,6 +425,126 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #ccc;
         }
+
+        /* Next Destination Section */
+        .next-destination {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .next-destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .next-destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .next-destination-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .next-destination-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .next-destination-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .next-destination-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        .next-destination-content {
+            display: flex;
+            padding: 1.5rem;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .next-destination-img {
+            flex-shrink: 0;
+            width: 280px;
+            height: 180px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .next-destination-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .next-destination-card:hover .next-destination-img img {
+            transform: scale(1.05);
+        }
+        .next-destination-text {
+            flex: 1;
+        }
+        .next-destination-text h4 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        .next-destination-text p {
+            color: var(--dark);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .next-destination-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .next-destination-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15,48,87,0.3);
+        }
+        .next-destination-btn::after {
+            content: ' →';
+        }
+
+        @media (max-width: 768px) {
+            .next-destination-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .next-destination-img {
+                width: 100%;
+                height: 200px;
+            }
+            .next-destination-header h3 {
+                font-size: 1.2rem;
+            }
+            .next-destination-text h4 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .next-destination {
+                margin: 2rem auto;
+            }
+            .next-destination-content {
+                padding: 1rem;
+            }
+            .next-destination-img {
+                height: 160px;
+            }
+        }
         
         
     </style>
@@ -584,7 +704,29 @@
         </section>
     </main>
 
-<!-- Footer -->
+    <!-- Next Destination Section -->
+    <section class="next-destination">
+        <a href="jiuzhaigou.html" class="next-destination-link">
+            <div class="next-destination-card">
+                <div class="next-destination-header">
+                    <h3>What's on Next Page</h3>
+                    <p>Continue exploring China with your next destination</p>
+                </div>
+                <div class="next-destination-content">
+                    <div class="next-destination-img">
+                        <img src="images/jiuzhaigou.jpg" alt="Jiuzhaigou">
+                    </div>
+                    <div class="next-destination-text">
+                        <h4>Jiuzhaigou</h4>
+                        <p>Fairyland of turquoise lakes, cascading waterfalls, and snow-capped mountains - one of China's most spectacular natural wonders. Discover the magical multi-colored lakes and pristine forests.</p>
+                        <span class="next-destination-btn">Explore Jiuzhaigou</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- Footer -->
 <footer id="contact">
     <div class="footer-content">
         <div class="footer-top-section">
