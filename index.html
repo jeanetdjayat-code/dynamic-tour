@@ -759,15 +759,16 @@
 
         .footer-middle-bottom-row {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: flex-start;
             max-width: 800px;
             margin: 0 auto;
             gap: 2rem;
         }
         .footer-section {
             min-width: 250px;
-            text-align: center;
-            flex: 1;
+            text-align: left;
+            width: 100%;
         }
         .footer-section h3 {
             font-size: 1.2rem;
@@ -787,7 +788,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 0.5rem;
-            justify-content: center;
+            justify-content: flex-start;
         }
         .social-link {
             display: flex;
@@ -804,17 +805,6 @@
             background: var(--accent);
         }
         
-        /* Mobile optimization for footer */
-        @media (max-width: 768px) {
-            .footer-middle-bottom-row {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .footer-section {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
 
         .footer-bottom {
             text-align: center;
@@ -1175,7 +1165,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+            <p>&copy; 2024 Dynamic Tour. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1282,7 +1272,7 @@
 
                 const cityImages = {
                     'Beijing': 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Beijing%20Forbidden%20City%20imperial%20palace&image_size=landscape_16_9',
-                    'Shanghai': 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20The%20Bund%20modern%20city&image_size=landscape_16_9',
+                    'Shanghai': 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20modern%20city&image_size=landscape_16_9',
                     'Nanjing': 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Nanjing%20ancient%20capital%20historical%20city&image_size=landscape_16_9',
                     'Suzhou': 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Suzhou%20classical%20gardens%20traditional%20architecture&image_size=landscape_16_9',
                     'Hangzhou': 'images/hangzhou.jpg',

@@ -51,7 +51,7 @@
             justify-content: flex-start;
             align-items: center;
             padding: 0.8rem 2rem 0.8rem 1.2rem;
-            gap: 2rem;
+            gap: 0;
         }
         .logo-container {
             display: flex;
@@ -74,7 +74,7 @@
         .nav-links {
             display: flex;
             gap: 1.8rem;
-            margin-left: 2rem;
+            margin-left: auto;
         }
         .nav-links a {
             color: var(--primary);
@@ -154,7 +154,7 @@
         .banner {
             height: clamp(250px, 50vw, 500px);
             background: linear-gradient(rgba(15,48,87,0.6), rgba(15,48,87,0.7)),
-                        url('images/zhangjiajie.jpg') center/cover no-repeat;
+                        url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zhangjiajie%20Avatar%20Mountains%20towering%20quartz%20sandstone%20pillars&image_size=landscape_16_9') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -383,14 +383,16 @@
         }
         .footer-middle-bottom-row {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: flex-start;
             max-width: 800px;
             margin: 0 auto;
             gap: 2rem;
         }
         .footer-section {
-            flex: 1;
             min-width: 200px;
+            width: 100%;
+            text-align: left;
         }
         .hassle-text {
             color: var(--accent) !important;
@@ -401,6 +403,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            justify-content: flex-start;
         }
         .social-link {
             display: flex;
@@ -422,18 +425,7 @@
             color: #ccc;
         }
         
-        @media (max-width: 768px) {
-            .footer-middle-bottom-row {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .footer-section {
-                text-align: center;
-            }
-            .social-links {
-                justify-content: center;
-            }
-        }
+        
     </style>
 </head>
 <body>
@@ -620,7 +612,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Dynamic Tour. All rights reserved.</p>
+        <p>&copy; 2024 Dynamic Tour. All rights reserved.</p>
     </div>
 </footer>
 
