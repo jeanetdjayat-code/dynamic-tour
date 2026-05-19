@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
     <title>Dynamic Tour - China Travel Guide</title>
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://jeanetdjayat-code.github.io/dynamic-tour/sitemap.xml">
     <!-- Open Graph Meta Tags for WhatsApp and Social Media -->
@@ -30,8 +32,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
         }
 
         :root {
@@ -41,13 +45,40 @@
             --light: #f8f9fa;
             --gray: #eee;
             --dark: #333;
-            --wechat-green: #07C160; /* Official WeChat green color */
+            --wechat-green: #07C160;
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
         }
 
         body {
             background: var(--light);
             color: var(--dark);
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        button, a {
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        a {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea, select {
+            font-size: 16px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
         img {
@@ -109,18 +140,24 @@
         }
         .menu-btn {
             display: none;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             background: none;
             border: none;
             color: var(--primary);
             cursor: pointer;
-            padding: 0.5rem; /* Better touch target for mobile */
-            border-radius: 4px;
+            padding: 0.8rem;
+            min-width: 48px;
+            min-height: 48px;
+            border-radius: 8px;
             transition: background-color 0.2s;
             margin-left: auto;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .menu-btn:hover {
+        .menu-btn:hover,
+        .menu-btn:active {
             background-color: var(--gray);
         }
 
@@ -134,17 +171,34 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                padding: 1rem 2rem;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                gap: 1rem;
+                padding: 1rem 1rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                gap: 0;
                 z-index: 999;
-                border-top: 2px solid var(--primary-light); /* Visual separation */
+                border-top: 2px solid var(--primary-light);
+            }
+            .nav-links a {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                border-bottom: 1px solid var(--gray);
+                transition: background-color 0.2s;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+            }
+            .nav-links a:hover,
+            .nav-links a:active {
+                background-color: var(--light);
+                color: var(--accent);
+            }
+            .nav-links a:last-child {
+                border-bottom: none;
             }
             .nav-links.active {
                 display: flex;
             }
             .menu-btn {
-                display: block;
+                display: flex;
             }
             .logo-img {
                  height: 80px;
@@ -152,7 +206,6 @@
              .logo-text {
                  font-size: 1.4rem;
              }
-            /* Fix small screen logo text wrap */
             .logo-container {
                 gap: 0.5rem;
             }
@@ -212,12 +265,17 @@
         }
         
         .btn {
-            padding: 0.7rem 1.3rem;
+            padding: 0.9rem 1.6rem;
+            min-height: 48px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .btn-primary {
@@ -226,7 +284,8 @@
             font-weight: 700;
         }
         
-        .btn-primary:hover {
+        .btn-primary:hover,
+        .btn-primary:active {
             background: #e67e22;
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
@@ -238,7 +297,8 @@
             border: 2px solid white;
         }
         
-        .btn-secondary:hover {
+        .btn-secondary:hover,
+        .btn-secondary:active {
             background: white;
             color: var(--primary);
             transform: translateY(-3px);
@@ -257,9 +317,10 @@
             }
             
             .btn {
-                width: 200px;
+                width: 220px;
                 text-align: center;
-                padding: 0.8rem 1.5rem;
+                padding: 0.9rem 1.5rem;
+                min-height: 50px;
             }
         }
         
@@ -272,8 +333,10 @@
                 line-height: 1.3;
             }
             .btn {
-                width: 180px;
-                padding: 0.7rem 1.2rem;
+                width: 100%;
+                max-width: 280px;
+                padding: 0.9rem 1.2rem;
+                min-height: 52px;
             }
         }
 
@@ -397,16 +460,21 @@
             display: inline-block;
             background: var(--primary);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            min-height: 44px;
+            min-width: 120px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s, transform 0.2s;
-            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+            font-size: 0.9rem;
+            text-align: center;
         }
-        .card-btn:hover {
+        .card-btn:hover,
+        .card-btn:active {
             background: var(--primary-light);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 48, 87, 0.3);
         }
         
         @media (max-width: 768px) {
@@ -430,8 +498,10 @@
                 font-size: 0.85rem;
             }
             .card-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
+                padding: 0.7rem 1.3rem;
+                font-size: 0.85rem;
+                min-height: 44px;
+                min-width: 100px;
             }
         }
         
@@ -442,6 +512,11 @@
             }
             .card-img {
                 height: 160px;
+            }
+            .card-btn {
+                width: 100%;
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
             }
             .card-content {
                 padding: 0.9rem;
@@ -818,12 +893,14 @@
         /* ----------------- WHATSAPP BUTTON (Fixed + Mobile Optimized) ----------------- */
         .whatsapp-btn {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #25D366; /* WhatsApp green */
+            bottom: calc(2rem + var(--safe-bottom));
+            right: calc(2rem + var(--safe-right));
+            background: #25D366;
             color: white;
             width: 60px;
             height: 60px;
+            min-width: 60px;
+            min-height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -832,8 +909,10 @@
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
             z-index: 998;
+            -webkit-tap-highlight-color: transparent;
         }
-        .whatsapp-btn:hover {
+        .whatsapp-btn:hover,
+        .whatsapp-btn:active {
             transform: scale(1.1);
             box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
         }
@@ -844,10 +923,12 @@
         /* Mobile optimization for WhatsApp button */
         @media (max-width: 480px) {
             .whatsapp-btn {
-                width: 50px;
-                height: 50px;
-                bottom: 1.5rem;
-                right: 1.5rem;
+                width: 54px;
+                height: 54px;
+                min-width: 54px;
+                min-height: 54px;
+                bottom: calc(1.5rem + var(--safe-bottom));
+                right: calc(1.5rem + var(--safe-right));
             }
         }
 
